@@ -13,3 +13,18 @@ Within each **tr** we need to make  **7 td tags**. We will use *numbers to repre
     <tr>
       <td id="10"></td><td id="11"></td><td id="12"></td><td id="13"></td><td id="14"></td><td id="15"></td><td id="16"></td>
     </tr>
+</table>
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    **JS file**
+
+1. Create our **'view'** object This will be used to make a method to display messages to the user based on their input & we will make two other methods to deal with adding a class to the user input location.
+
+2. Add a **"displayMessage"** method and set it to a function with a **parameter of msg**. In the function create a variable called **"messageArea"** and target the **messageArea** id in the HTML, using document .getElemetById.
+Then *call the variable we just made and change the .innerHTML to equal the msg parameter.*
+
+3. Make a new method called **"displayHit"** setting it to a function passing *'location'* function displayHit(location){}
+const cell, use it to find the document.getElementById and find the location.
+
+This will be converted to number
