@@ -82,7 +82,7 @@ const model = {   //change vaules
             } while (this.collision(locations));
             this.ships[i].locations = locations;  // cn
     }
-},
+}
 
 generateShip: function generateShip() { // cn
     const direction = Math.floor(Math.random() * 2);
@@ -112,7 +112,7 @@ generateShip: function generateShip() { // cn
         }
     }
     return newShipLocations;
-},
+}
 
 // Stopping a Collision! see if the i is less than this.numShips. call it ship have it equal to the index of this.ships.  second loop inside the for loop we just made, have it check to see if a j variable is less than locations.length. Inside this loop, create a if statement is see if ship.locations.indexOf(locations[j]) is greater than or equal to 0, if so return this true. Outside the for loop we need to return this false so we know there have been no collisions.
 
@@ -127,6 +127,70 @@ generateShip: function generateShip() { // cn
           }
         }
         return false;
-      }
+      };
+
+// we can track how many guesses the user takes to beat the game
+// we need to check if the hit var & model.shipSunk method is equal to model.numShips, if this passes it means all the ships will be sunk, 
+
+const controller = {
+    guesses: 0,
+
+    processGuess: function(guess) {
+        const location = parseGuess(guess);
+
+        if (location) {
+            this.guesses++;
+            const hit = model.fire(location);
+
+            if (hit && model.shipsSunk === model.numShips) {
+                VRFieldOfView.displayMessage('You sank all of the ships, in ' + this.guesses + 'guesses');
+            }
+        }
+    }
 };
- 
+
+function parseGuess(guess) {
+    const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+    if (guess === null || guess.length !== 2) {
+        alert('Oops, please enter a letter and number on the board.');
+    } else { 
+        const firstChar = guess.charAt(0);
+        const row = alphabet.indexOf(firstChar);
+        const column = guess.charAt(1);
+        
+        if (isNaN(row) || isNaN(column)) {
+            alert("Oops, that isn't on the board.");
+        } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+            alert("Oops, that's off the board");
+        } else {
+            return row + column;
+        }
+    }
+    return null;
+}
+function handleFireButton() {
+    const guessInput = document.getElementById('guessInput');
+    const guess = guessInput.nodeValue.toUpperCase();
+    controller.processGuess(guess);
+    guessInput.value = '';
+}
+function handleKeyPress (e) {
+    const fireButton = document.getElementById("fireButton");
+    e = e || window.event;
+    if (e.keyCode === 13) {
+        fireButton.click();
+        return false;
+    }
+}
+window.onload = init;
+
+function init() {
+    const fireButton = document.getElementById('fireButton');
+    fireButton.onclick = handleFireButton;
+    const guessInput = document.getElementById('guessInput');
+    guessInput.onkeypress = handleKeyPress;
+    model.generateShipLocations();
+}
+    
+
