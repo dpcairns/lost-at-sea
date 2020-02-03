@@ -31,3 +31,5 @@ This will be converted to number form so we can find an individial <td> id.
 <const .setAttribute> <class of hit> to the cell.
 
 4. **displayMiss**  setting it to a function passing *'location'*
+<const cell = document.getElementById and find the location.
+call **cell** "add .setAtrribute add the "class" of "miss" to the cell -- this will assign either of the two images based on iuser hits the ship or misses a ship.*
