@@ -74,7 +74,7 @@ const model = {   //change vaules
     // three methods within the model object Each will be set to a function. The first call generateShipLocations, we will use this to define the ships locations,
     //  the second call generateShip these will create the actual ships, and the third call it collision and pass the parameter of locations, we will use this to stop any ships from colliding.
     //                     //////// GENERATSHIPS FUNCTION//////////////////////////
-    generateShipsLocations: function generateShipsLocations() { // will chgange name
+    generateShipsLocations: function() { // will chgange name
         const locations;
         for (let i =0; i < this.numShips; i++) {
             do {
