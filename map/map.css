@@ -1,5 +1,5 @@
 body {
-    background-color: black;  
+ 
 }
 
 #board {
@@ -7,7 +7,7 @@ body {
     width: 1024px;
     height: 863px;
     margin: auto; 
-    background: url(../assets/nautical-map.png) no-repeat;  
+    background: url(../assets/mythology/nautical-map.png) no-repeat;  
 }
 #messageArea {
     position: absolute;
