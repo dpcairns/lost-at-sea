@@ -40,7 +40,8 @@ form input {
     background-color: aqua;
     border-color: black;
     font-size: 1rem;
-}.form-control {
+}
+.form-control {
     width: 70% !important;
     margin-right: 5%;
 }
