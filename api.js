@@ -30,4 +30,5 @@ export function addPoints(points) {
     }
 }
 
+export { saveUser }
 // for storing user data
