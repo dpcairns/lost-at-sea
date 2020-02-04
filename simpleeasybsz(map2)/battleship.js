@@ -43,24 +43,52 @@ const hitCount = 0;
    0 = empty, 1 = part of a ship, 2 = a sunken part of a ship, 3 = a missed shot
 */
 const gameBoard = [
+<<<<<<< HEAD:map2/battleship.js
     [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+=======
+>>>>>>> 4cfaa2a8c0668c596df801dd1c4fba9d6a59f709:simpleeasybsz(map2)/battleship.js
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [1, 0, 0, 0, 0, 0, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-    [1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
+let randomLocationX = Math.floor(Math.random() * 9);
+console.log(randomLocationX);
+let randomLocationY = Math.floor(Math.random() * 9);
+const randomLocation3 = Math.floor(Math.random() * 9);
+const randomLocation4 = Math.floor(Math.random() * 9);
+const randomLocation5 = Math.floor(Math.random() * 9);
+const randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Math.floor(Math.random() * 9);const randomLocation8 = Math.floor(Math.random() * 9);const randomLocation9 = Math.floor(Math.random() * 9);const randomLocation10 = Math.floor(Math.random() * 9);
 
+
+// if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
+
+
+for (let i = 0; i < gameBoard.length; i++);
+gameBoard[randomLocationY][randomLocationX] = 1;
+gameBoard[randomLocationY][randomLocationX + 1 ] = 1;
+gameBoard[randomLocationY][randomLocationX + 2 ] = 1;
+gameBoard[randomLocation3][randomLocation4] = 2;
+gameBoard[randomLocation3][randomLocation4 + 1] = 2;
+gameBoard[randomLocation3][randomLocation4 + 2] = 2;
+gameBoard[randomLocation5][randomLocation6] = 3;
+gameBoard[randomLocation5][randomLocation6 + 1] = 3;
+gameBoard[randomLocation7][randomLocation8] = 4;
+gameBoard[randomLocation9][randomLocation10] = 5;
+console.log(JSON.stringify(gameBoard));
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener('click', fireTorpedo, false);
 
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
+    
     if (e.target !== e.currentTarget) {
         // extract row and column # from the HTML element's id
         const row = e.target.id.substring(1, 2);
@@ -74,7 +102,8 @@ function fireTorpedo(e) {
             gameBoard[row][col] = 3;
 			
 		// if player clicks a square with a ship, change the color and change square's value
-        } else if (gameBoard[row][col] === 1) {
+        } else if (gameBoard[row][col] === 1 ||
+            gameBoard[row][col] === 2) {
             e.target.style.background = 'red';
 			// set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 2;
