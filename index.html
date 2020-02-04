@@ -1,44 +1,60 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>Battle ship</title>
-    <div>
-        <h1>Odyssey Battleship</h1>
-    </div>
+    <link rel="stylesheet" href="../landingpage.css">
+    <title>Lost at Sea</title>
 </head>
 
 <body>
-    <h3> 1) The computer will throw random coordiantes at you, the close computer hits, the more your ship starts to sink. </h3>
-    <h3> 2) Select the coordiantes you would like to throw.</h3>
-    <h3> 3) In order to win, you must sink your opponent's ship.</h3>    <form id="user-sign-up">
-        <p class="text-prompt">
+    <main>
+    <center>
+    <div>
+        <img src="../assets/aerialview.jpeg" width="500" height="300">
+    </div>
+    <p style="width: 400px">
+        You are lost at sea.
+    </p>
+    <br>
+    <br>
+    <span>Please enter your name:</span>
+    <input type="text" value="Jack Sparrow" id="username">
+    <br>
+    <br>
+    <p>...and select an avatar to continue:</p>
+    <br>
+    <br>
+    <section id="avatars">
+        <label>
+          <input type="radio" name="avatar">
+            <img src="../assets/icon.png" height="100" width="100">
+        </label>
+        <label>
+          <input type="radio" name="avatar">
+            <img src="../assets/wave.png" height="100" width="100">
+        </label>
+        <label>
+          <input type="radio" name="avatar">
+                 <img src="../assets/boat-anchor.png" height="100" width="100">
+      </label>
+      </section>
+      <br>
+      <br>
+      <br>
+    <button id="createUserButton">Let's go!</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </center>
+    </main>
 
-            <span>Please enter your name:</span>
-            <input type="text" value="Odysseus" id="user name">
-            <div>
-            <legend>Select Your Avatar:</legend>
-            <p id="avatars">
-                </div>
-                <label>
-                <input type="radio" name="ship">
-                  <img src="./assets/mythology/Francesco_Hayez_028.jpg" height="150" width="250">
-                </label>
-                <label>
-                <input type="radio" name="ship">
-                  <img src="./assets/mythology/Odysseus-Čikoš_Sesija.jpg" height="150" width="250">
-                </label>
-                <label>
-                <input type="radio" name="ship">
-                       <img src="./assets/mythology/Odysseus_And_Nausicaä_-_Project_Gutenberg_eText_13725.jpg" height="150" width="250">
-                </label>
-                 </p>
-        </fieldset>
-        <script type="module" src="app.js"></script>
+    <script type="module" src="home.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 
-</html>
+</html>d

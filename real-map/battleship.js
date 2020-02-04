@@ -1,27 +1,27 @@
 // import compareCoord from './compareCoord.js';
 
 // set grid rows and columns and the size of each square
-var rows = 10;
-var cols = 10;
-var squareSize = 50;
+const rows = 10;
+const cols = 10;
+const squareSize = 50;
 
 // get the container element
-var gameBoardContainer = document.getElementById('gameboard');
+const gameBoardContainer = document.getElementById('gameboard');
 
 // make the grid columns and rows
 for (i = 0; i < cols; i++) {
     for (j = 0; j < rows; j++) {
 		
 		// create a new div HTML element for each grid square and make it the right size
-        var square = document.createElement('div');
+        const square = document.createElement('div');
         gameBoardContainer.appendChild(square);
 
     // give each div element a unique id based on its row and column, like "s00"
         square.id = 's' + j + i;			
 		
 		// set each grid square's coordinates: multiples of the current row or column number
-        var topPosition = j * squareSize;
-        var leftPosition = i * squareSize;			
+        const topPosition = j * squareSize;
+        const leftPosition = i * squareSize;			
 		
 		// use CSS absolute positioning to place each grid square on the page
         square.style.top = topPosition + 'px';
@@ -38,7 +38,7 @@ for (i = 0; i < cols; i++) {
       Submarine   - 3 hits
       Patrol Boat - 2 hits
 */
-var hitCount = 0;
+const hitCount = 0;
 
 /* create the 2d array that will contain the status of each square on the board
    and place ships on the board (later, create function for random placement!)
@@ -67,6 +67,7 @@ let randomLocation4 = [Math.floor(Math.random() * 8), Math.floor(Math.random() *
 
 
 for (let k = 0; k < gameBoard.length; k++);
+
 gameBoard[randomLocation1[0]][randomLocation1[1]] = 1;
 gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1;
 gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1;
@@ -86,13 +87,15 @@ function compareCoord(array1, array2) {
     else false;
 }
 
-while (!compareCoord(randomLocation1, randomLocation2 || randomLocation2, randomLocation3 || randomLocation2, randomLocation4)) {
+while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
     randomLocation2 = Math.floor(Math.random() * 6);
+    randomLocation2[0] + 1;
+   
 }
-while (!compareCoord(randomLocation1, randomLocation3 || randomLocation3, randomLocation4 || randomLocation3, randomLocation2)) {
+while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
     randomLocation3 = Math.floor(Math.random() * 6);
 }
-while (!compareCoord(randomLocation1, randomLocation4 || randomLocation4, randomLocation3 || randomLocation4, randomLocation2)) {
+while (!compareCoord(randomLocation1, randomLocation4)) {
     randomLocation4 = Math.floor(Math.random() * 6);
 }
 
@@ -107,8 +110,8 @@ function fireTorpedo(e) {
     
     if (e.target !== e.currentTarget) {
         // extract row and column # from the HTML element's id
-        var row = e.target.id.substring(1, 2);
-        var col = e.target.id.substring(2, 3);
+        const row = e.target.id.substring(1, 2);
+        const col = e.target.id.substring(2, 3);
         //alert("Clicked on row " + row + ", col " + col);
 				
 		// if player clicks a square with no ship, change the color and change square's value
@@ -119,7 +122,7 @@ function fireTorpedo(e) {
 			
 		// if player clicks a square with a ship, change the color and change square's value
         } else if (gameBoard[row][col] === 1 ||
-            gameBoard[row][col] === 2) {
+            gameBoard[row][col] === 2 || gameBoard[row][col] === 3 || gameBoard[row][col] === 4) {
             e.target.style.background = 'red';
 			// set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 2;
