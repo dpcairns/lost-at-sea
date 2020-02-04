@@ -22,6 +22,8 @@ function drawBoard() {
     for (let row in board) {
         for (let space in board[row]) {
             // This create an individual space element for the board.
+            // 'space' variable will be zero or one (set in initializeBoard)
+            // you'll eventually use this to determine if a click is a 'hit'
             const spaceElement = document.createElement('div');
             spaceElement.className = 'board-space';
             boardElement.appendChild(spaceElement);
