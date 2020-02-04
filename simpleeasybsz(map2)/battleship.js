@@ -46,7 +46,7 @@ const hitCount = 0;
 */
 const gameBoard = [
 
-    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0]
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -68,8 +68,6 @@ const randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Ma
 
 
 // if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
-if gameBoard
-
 
 
 for (let i = 0; i < gameBoard.length; i++);
