@@ -69,6 +69,7 @@ let randomLocation4 = [Math.floor(Math.random() * 8), Math.floor(Math.random() *
 
 
 for (let k = 0; k < gameBoard.length; k++);
+
 gameBoard[randomLocation1[0]][randomLocation1[1]] = 1;
 gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1;
 gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1;
@@ -88,13 +89,15 @@ function compareCoord(array1, array2) {
     else false;
 }
 
-while (!compareCoord(randomLocation1, randomLocation2 || randomLocation2, randomLocation3 || randomLocation2, randomLocation4)) {
+while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
     randomLocation2 = Math.floor(Math.random() * 6);
+    randomLocation2[0] + 1;
+   
 }
-while (!compareCoord(randomLocation1, randomLocation3 || randomLocation3, randomLocation4 || randomLocation3, randomLocation2)) {
+while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
     randomLocation3 = Math.floor(Math.random() * 6);
 }
-while (!compareCoord(randomLocation1, randomLocation4 || randomLocation4, randomLocation3 || randomLocation4, randomLocation2)) {
+while (!compareCoord(randomLocation1, randomLocation4)) {
     randomLocation4 = Math.floor(Math.random() * 6);
 }
 
@@ -121,7 +124,7 @@ function fireTorpedo(e) {
 			
 		// if player clicks a square with a ship, change the color and change square's value
         } else if (gameBoard[row][col] === 1 ||
-            gameBoard[row][col] === 2) {
+            gameBoard[row][col] === 2 || gameBoard[row][col] === 3 || gameBoard[row][col] === 4) {
             e.target.style.background = 'red';
 			// set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 2;
