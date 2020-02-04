@@ -54,12 +54,29 @@ const gameBoard = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
-const randomLocationX = Math.floor(Math.random() * 2);
+let randomLocationX = Math.floor(Math.random() * 9);
 console.log(randomLocationX);
-const randomLocationY = Math.floor(Math.random() * 2);
+let randomLocationY = Math.floor(Math.random() * 9);
+const randomLocation3 = Math.floor(Math.random() * 9);
+const randomLocation4 = Math.floor(Math.random() * 9);
+const randomLocation5 = Math.floor(Math.random() * 9);
+const randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Math.floor(Math.random() * 9);const randomLocation8 = Math.floor(Math.random() * 9);const randomLocation9 = Math.floor(Math.random() * 9);const randomLocation10 = Math.floor(Math.random() * 9);
+
+
+// if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
+
+
 for (let i = 0; i < gameBoard.length; i++);
 gameBoard[randomLocationY][randomLocationX] = 1;
-console.log(gameBoard);
+gameBoard[randomLocationY][randomLocationX + 1 ] = 1;
+gameBoard[randomLocationY][randomLocationX + 2 ] = 1;
+gameBoard[randomLocation3][randomLocation4] = 2;
+gameBoard[randomLocation3][randomLocation4 + 1] = 2;
+gameBoard[randomLocation3][randomLocation4 + 2] = 2;
+gameBoard[randomLocation5][randomLocation6] = 3;
+gameBoard[randomLocation5][randomLocation6 + 1] = 3;
+gameBoard[randomLocation7][randomLocation8] = 4;
+gameBoard[randomLocation9][randomLocation10] = 5;
 console.log(JSON.stringify(gameBoard));
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener('click', fireTorpedo, false);
@@ -81,7 +98,8 @@ function fireTorpedo(e) {
             gameBoard[row][col] = 3;
 			
 		// if player clicks a square with a ship, change the color and change square's value
-        } else if (gameBoard[row][col] === 1) {
+        } else if (gameBoard[row][col] === 1 ||
+            gameBoard[row][col] === 2) {
             e.target.style.background = 'red';
 			// set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 2;
