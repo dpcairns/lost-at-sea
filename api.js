@@ -1,6 +1,6 @@
 
 
-export function createUser(username, image) {
+export function saveUser(username, image) {
     localStorage.setItem('user', JSON.stringify({ name: username, image: image }));
 
 }
