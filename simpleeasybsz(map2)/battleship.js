@@ -61,6 +61,7 @@ gameBoardContainer.addEventListener('click', fireTorpedo, false);
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
+    
     if (e.target !== e.currentTarget) {
         // extract row and column # from the HTML element's id
         var row = e.target.id.substring(1, 2);
