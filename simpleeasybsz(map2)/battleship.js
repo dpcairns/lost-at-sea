@@ -1,3 +1,5 @@
+import compareCoord from './compareCoord.js';
+
 // set grid rows and columns and the size of each square
 const rows = 10;
 const cols = 10;
@@ -68,6 +70,8 @@ const randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Ma
 
 
 // if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
+if gameBoard
+
 
 
 for (let i = 0; i < gameBoard.length; i++);
