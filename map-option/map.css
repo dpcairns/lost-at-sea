@@ -1,0 +1,14 @@
+#board {
+    display: block;
+    margin: auto;
+    height: 600px;
+    width: 600px;
+    background-image: url('../assets/sunkenship.jpeg');
+}
+
+.board-space {
+    float: left;
+    width: 58px;
+    height: 58px;
+    border: 1px solid #ffffff;
+}
