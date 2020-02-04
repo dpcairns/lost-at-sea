@@ -45,10 +45,6 @@ const hitCount = 0;
    0 = empty, 1 = part of a ship, 2 = a sunken part of a ship, 3 = a missed shot
 */
 const gameBoard = [
-<<<<<<< HEAD:map2/battleship.js
-    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
-=======
->>>>>>> 4cfaa2a8c0668c596df801dd1c4fba9d6a59f709:simpleeasybsz(map2)/battleship.js
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -70,8 +66,6 @@ const randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Ma
 
 
 // if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
-if gameBoard
-
 
 
 for (let i = 0; i < gameBoard.length; i++);
