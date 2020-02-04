@@ -1,17 +1,32 @@
-const userSignUp = document.getElementById('user-sign-up');
+import { saveUser } from './app.js';
 
-userSignUp.addEventListener('enter', function (event) {
+const userSignUp = document.getElementById('userCreate');
 
-    event.preventDefault();
+userSignUp.addEventListener('click'), function (event) {
+    const nameField = document.getElementById('username');
+    const avatarField = document.querySelector('input[name="avatar"]:checked').value;
+
+    saveUser({ username: nameField.value, avatar: avatarField });
+    window.location = 'map'; 
+};
 
 
-    const formData = new FormData(userSignUp);
+
+
+// const userSignUp = document.getElementById('user-sign-up');
+
+// userSignUp.addEventListener('enter', function (event) {
+
+//     event.preventDefault();
+
+
+//     const formData = new FormData(userSignUp);
    
-    const user = makeUser(formData);
+//     const user = makeUser(formData);
 
 
-    saveUser(user);
+//     saveUser(user);
 
 
-    window.location = 'map';
-});
+//     window.location = 'map';
+// });
