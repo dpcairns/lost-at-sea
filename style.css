@@ -1,7 +1,20 @@
 body {
-    background: url(./assets/Robert_Duncanson_-_Land_of_the_Lotos_Eaters.jpeg);
+    background: white;
     text-align: center;
     text-decoration: double;
-    text-shadow: rgb(252, 3, 3);
-    color:rgb(250, 8, 8);
+    text-shadow: black;
+    color: black;
+}
+h1 {
+    font-style: italic;
+}
+h3 {
+    font-style: italic;
+}
+span {
+
+    font-style: italic;
+}
+legend {
+    font-style: italic;
 }
