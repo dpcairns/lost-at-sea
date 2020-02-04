@@ -1,13 +1,14 @@
 body {
-    background-color: black;  
+    background-color: black;
+ 
 }
 
-#board {
+div#board {
     position: relative;
     width: 1024px;
     height: 863px;
     margin: auto; 
-    background: url(../assets/nautical-map.png) no-repeat;  
+    background: url(../assets/mythology/nautical-map.png) no-repeat;   
 }
 #messageArea {
     position: absolute;
@@ -19,7 +20,6 @@ table {
     position: absolute;
     left: 173px;
     top: 98px;
-    border-spacing: 0;
 }
 tr {
     height: 97px;

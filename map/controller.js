@@ -1,3 +1,5 @@
+
+// The controller section will keep track of user guesses to display a message that say "It took you x amount of guesses to sink all ships"
 const controller = {
     guesses: 0,
 
@@ -9,11 +11,13 @@ const controller = {
             const hit = model.fire(location);
 
             if (hit && model.shipsSunk === model.numShips) {
-                VRFieldOfView.displayMessage('You sank all of the ships, in ' + this.guesses + 'guesses');
+                view.displayMessage('You sank all of the ships, in ' + this.guesses + 'guesses');
             }
         }
     }
 };
+
+//this section will parse the user's guess and associate that guess with a table cell.
 function parseGuess(guess) {
     const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
@@ -34,6 +38,7 @@ function parseGuess(guess) {
     }
     return null;
 }
+
 function handleFireButton() {
     const guessInput = document.getElementById('guessInput');
     const guess = guessInput.nodeValue.toUpperCase();
@@ -48,6 +53,7 @@ function handleKeyPress (e) {
         return false;
     }
 }
+
 window.onload = init;
 
 function init() {
