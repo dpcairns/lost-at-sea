@@ -61,35 +61,41 @@ const gameBoard = [
 let randomLocationX = Math.floor(Math.random() * 9);
 console.log(randomLocationX);
 let randomLocationY = Math.floor(Math.random() * 9);
-const randomLocation3 = Math.floor(Math.random() * 9);
-const randomLocation4 = Math.floor(Math.random() * 9);
-const randomLocation5 = Math.floor(Math.random() * 9);
-const randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Math.floor(Math.random() * 9);const randomLocation8 = Math.floor(Math.random() * 9);const randomLocation9 = Math.floor(Math.random() * 9);const randomLocation10 = Math.floor(Math.random() * 9);
+let randomLocation3 = Math.floor(Math.random() * 9);
+let randomLocation4 = Math.floor(Math.random() * 9);
+let randomLocation5 = Math.floor(Math.random() * 9);
+let randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Math.floor(Math.random() * 9);const randomLocation8 = Math.floor(Math.random() * 9);const randomLocation9 = Math.floor(Math.random() * 9);const randomLocation10 = Math.floor(Math.random() * 9);
 
 
 // if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3)
 newFunction();
 console.log(JSON.stringify(gameBoard));
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
-gameBoardContainer.addEventListener('click', fireTorpedo, false);
+gameBoardContainer.addEventListener('click', fireCannon, false);
 
 function newFunction() {
     for (let i = 0; i < gameBoard.length; i++)
         ;
     gameBoard[randomLocationY][randomLocationX] = 1;
     gameBoard[randomLocationY][randomLocationX + 1] = 1;
-    gameBoard[randomLocationY][randomLocationX + 2] = 1;
+    gameBoard[randomLocationY][randomLocationX += 2] = 1;
     gameBoard[randomLocation3][randomLocation4] = 2;
     gameBoard[randomLocation3][randomLocation4 + 1] = 2;
-    gameBoard[randomLocation3][randomLocation4 + 2] = 2;
+    gameBoard[randomLocation3][randomLocation4 += 2] = 2;
     gameBoard[randomLocation5][randomLocation6] = 3;
     gameBoard[randomLocation5][randomLocation6 + 1] = 3;
     gameBoard[randomLocation7][randomLocation8] = 4;
     gameBoard[randomLocation9][randomLocation10] = 5;
 }
 
+function randomNum () {
+
+    let locationOne = randomNum;
+    let locationTwo = locationOne + 1;
+    let locationThree = locationTwo + 1;
+}
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
-function fireTorpedo(e) {
+function fireCannon(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
     
     if (e.target !== e.currentTarget) {
@@ -105,22 +111,25 @@ function fireTorpedo(e) {
             gameBoard[row][col] = 3;
 			
 		// if player clicks a square with a ship, change the color and change square's value
-        } else if (gameBoard[row][col] === 1 ||
-            gameBoard[row][col] === 2) {
+        } else if (gameBoard[row][col] === 1) {
             e.target.style.background = 'red';
 			// set this square's value to 2 to indicate the ship has been hit
-            gameBoard[row][col] = 2;
+       
+        } else if (gameBoard[row][col] === 2) {
+            e.target.style.background = 'blue';
+			// set this square's value to 2 to indicate the ship has been hit
+        } else if (gameBoard[row][col] === 3) {
+            e.target.style.background = 'green';
 			
+        } else if (gameBoard[row][col] === 4) {
+            e.target.style.background = 'yellow';
 			// increment hitCount each time a ship is hit
-            hitCount++;
-			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
-            if (hitCount === 17) {
-                alert('All enemy battleships have been defeated! You win!');
-            }
+            
+			
 			
 		// if player clicks a square that's been previously hit, let them know
         } else if (gameBoard[row][col] > 1) {
-            alert('Stop wasting your torpedos! You already fired at this location.');
+            // alert('Stop wasting your torpedos! You already fired at this location.');
         }		
     }
     e.stopPropagation();
