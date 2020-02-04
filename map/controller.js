@@ -11,7 +11,7 @@ const controller = {
             const hit = model.fire(location);
 
             if (hit && model.shipsSunk === model.numShips) {
-                VRFieldOfView.displayMessage('You sank all of the ships, in ' + this.guesses + 'guesses');
+                view.displayMessage('You sank all of the ships, in ' + this.guesses + 'guesses');
             }
         }
     }
