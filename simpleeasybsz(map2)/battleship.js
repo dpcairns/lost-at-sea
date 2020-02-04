@@ -1,4 +1,4 @@
-import compareCoord from './compareCoord.js';
+// import compareCoord from './compareCoord.js';
 
 // set grid rows and columns and the size of each square
 var rows = 10;
@@ -56,31 +56,47 @@ const gameBoard = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
-let randomLocationX = Math.floor(Math.random() * 9);
-console.log(randomLocationX);
-let randomLocationY = Math.floor(Math.random() * 9);
-const randomLocation3 = Math.floor(Math.random() * 9);
-const randomLocation4 = Math.floor(Math.random() * 9);
-const randomLocation5 = Math.floor(Math.random() * 9);
-const randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Math.floor(Math.random() * 9);const randomLocation8 = Math.floor(Math.random() * 9);const randomLocation9 = Math.floor(Math.random() * 9);const randomLocation10 = Math.floor(Math.random() * 9);
+const randomLocation1 = [Math.floor(Math.random() * 6), Math.floor(Math.random() * 6)];
+let randomLocation2 = [Math.floor(Math.random() * 7), Math.floor(Math.random() * 7)];
+let randomLocation3 = [Math.floor(Math.random() * 7), Math.floor(Math.random() * 7)];
+let randomLocation4 = [Math.floor(Math.random() * 8), Math.floor(Math.random() * 8)];
+
 
 
 // if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
-if gameBoard
 
 
+for (let k = 0; k < gameBoard.length; k++);
+gameBoard[randomLocation1[0]][randomLocation1[1]] = 1;
+gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1;
+gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1;
+gameBoard[randomLocation2[0]][randomLocation2[1]] = 2;
+gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2;
+gameBoard[randomLocation2[0]][randomLocation2[1] + 2] = 2;
+gameBoard[randomLocation3[0]][randomLocation3[1]] = 3;
+gameBoard[randomLocation3[0]][randomLocation3[1] + 1] = 3;
+gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3;
+gameBoard[randomLocation4[0]][randomLocation4[1]] = 4;
+gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4;
 
-for (let i = 0; i < gameBoard.length; i++);
-gameBoard[randomLocationY][randomLocationX] = 1;
-gameBoard[randomLocationY][randomLocationX + 1 ] = 1;
-gameBoard[randomLocationY][randomLocationX + 2 ] = 1;
-gameBoard[randomLocation3][randomLocation4] = 2;
-gameBoard[randomLocation3][randomLocation4 + 1] = 2;
-gameBoard[randomLocation3][randomLocation4 + 2] = 2;
-gameBoard[randomLocation5][randomLocation6] = 3;
-gameBoard[randomLocation5][randomLocation6 + 1] = 3;
-gameBoard[randomLocation7][randomLocation8] = 4;
-gameBoard[randomLocation9][randomLocation10] = 5;
+function compareCoord(array1, array2) {
+    if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
+        return true;
+    }
+    else false;
+}
+
+while (!compareCoord(randomLocation1, randomLocation2 || randomLocation2, randomLocation3 || randomLocation2, randomLocation4)) {
+    randomLocation2 = Math.floor(Math.random() * 6);
+}
+while (!compareCoord(randomLocation1, randomLocation3 || randomLocation3, randomLocation4 || randomLocation3, randomLocation2)) {
+    randomLocation3 = Math.floor(Math.random() * 6);
+}
+while (!compareCoord(randomLocation1, randomLocation4 || randomLocation4, randomLocation3 || randomLocation4, randomLocation2)) {
+    randomLocation4 = Math.floor(Math.random() * 6);
+}
+
+
 console.log(JSON.stringify(gameBoard));
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener('click', fireTorpedo, false);
