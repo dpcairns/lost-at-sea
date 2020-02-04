@@ -1,4 +1,4 @@
-import compareCoord from './compareCoord.js';
+// import compareCoord from './compareCoord.js';
 
 // set grid rows and columns and the size of each square
 const rows = 10;
@@ -46,7 +46,7 @@ const hitCount = 0;
 */
 const gameBoard = [
 
-    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -67,25 +67,26 @@ const randomLocation5 = Math.floor(Math.random() * 9);
 const randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Math.floor(Math.random() * 9);const randomLocation8 = Math.floor(Math.random() * 9);const randomLocation9 = Math.floor(Math.random() * 9);const randomLocation10 = Math.floor(Math.random() * 9);
 
 
-// if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
-if gameBoard
-
-
-
-for (let i = 0; i < gameBoard.length; i++);
-gameBoard[randomLocationY][randomLocationX] = 1;
-gameBoard[randomLocationY][randomLocationX + 1 ] = 1;
-gameBoard[randomLocationY][randomLocationX + 2 ] = 1;
-gameBoard[randomLocation3][randomLocation4] = 2;
-gameBoard[randomLocation3][randomLocation4 + 1] = 2;
-gameBoard[randomLocation3][randomLocation4 + 2] = 2;
-gameBoard[randomLocation5][randomLocation6] = 3;
-gameBoard[randomLocation5][randomLocation6 + 1] = 3;
-gameBoard[randomLocation7][randomLocation8] = 4;
-gameBoard[randomLocation9][randomLocation10] = 5;
+// if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3)
+newFunction();
 console.log(JSON.stringify(gameBoard));
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener('click', fireTorpedo, false);
+
+function newFunction() {
+    for (let i = 0; i < gameBoard.length; i++)
+        ;
+    gameBoard[randomLocationY][randomLocationX] = 1;
+    gameBoard[randomLocationY][randomLocationX + 1] = 1;
+    gameBoard[randomLocationY][randomLocationX + 2] = 1;
+    gameBoard[randomLocation3][randomLocation4] = 2;
+    gameBoard[randomLocation3][randomLocation4 + 1] = 2;
+    gameBoard[randomLocation3][randomLocation4 + 2] = 2;
+    gameBoard[randomLocation5][randomLocation6] = 3;
+    gameBoard[randomLocation5][randomLocation6 + 1] = 3;
+    gameBoard[randomLocation7][randomLocation8] = 4;
+    gameBoard[randomLocation9][randomLocation10] = 5;
+}
 
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
