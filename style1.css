@@ -5,3 +5,12 @@ body {
     text-shadow: black;
     color:black;
 }
+h2 {
+    font-style: italic;
+}
+h1 {
+    font-style: italic;
+}
+div {
+    font-style: italic;
+}
