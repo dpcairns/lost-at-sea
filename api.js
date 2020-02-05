@@ -16,10 +16,6 @@ export function resetUser() {
     localStorage.removeItem('user');
 }
 
-export function saveUser(user) {
-    localStorage.setItem('user', JSON.stringify(user));
-}
-
 export function addPoints(points) {
     let user = getUser();
     if (user) {
@@ -27,6 +23,4 @@ export function addPoints(points) {
         saveUser(user);
     }
 }
-
-export { saveUser }
 // for storing user datas
