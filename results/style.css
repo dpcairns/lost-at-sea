@@ -2,7 +2,7 @@ body{
     margin: 0;
 }
 body::after {
-    background: url(./assets/sinkboat.jpg);
+    background: url(../assets/sailing-ship-675214_1280.jpg);
     content: "";
     opacity: 0.9;
     position: absolute;
@@ -12,7 +12,7 @@ body::after {
     bottom: 0;
     right: 0;
     left:0 ;
-    z-index: -1;  
+    z-index: -1; 
 
   }
 .container{
@@ -20,7 +20,7 @@ body::after {
     margin: 0 auto;
 }
 header{
-    background:rgb(151, 178, 179);
+    background:rgb(68, 75, 75);
     padding: 10px 0;
 }
 header::after{
@@ -44,7 +44,7 @@ padding-top: 20px;
 font-size: 20px;
 }
 a{
-    color: rgb(75, 97, 99);
+    color: rgb(229, 240, 243);
 }
 h1{
     position: absolute;
@@ -55,9 +55,10 @@ h1{
     padding: 25px;
     text-align: center; 
     font-family: 'Fredericka the Great', cursive;
-    font-size: 60px;
+    font-size: 50px;
     top: 30%;
     font-weight: 900;
+    color:white;
 }
 h2{
     position: absolute;
@@ -69,7 +70,8 @@ h2{
     text-align: center; 
     font-family: 'Fredericka the Great', cursive;
     font-size: 40px;
-    top: 400px;
+    top: 300px;
+    color: white;
 }
 #status{
     position: absolute;
@@ -81,7 +83,8 @@ h2{
     text-align: center; 
     font-family: 'Fredericka the Great', cursive;
     font-size: 30px;
-    top: 450px;
+    top: 400px;
+    color: white;
 }
 #hits{
     position: absolute;
@@ -93,5 +96,6 @@ h2{
     text-align: center; 
     font-family: 'Fredericka the Great', cursive;
     font-size: 30px;
-    top: 500px;
+    top: 450px;
+    color: white;
 }
