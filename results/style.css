@@ -2,7 +2,7 @@ body{
     margin: 0;
 }
 body::after {
-    background: url(../assets/sunset.jpg);
+    background: url(./assets/sinkboat.jpg);
     content: "";
     opacity: 0.9;
     position: absolute;
@@ -20,7 +20,7 @@ body::after {
     margin: 0 auto;
 }
 header{
-    background:#E6EBE0;
+    background:#A9CBB7;
     padding: 10px 0;
 }
 header::after{
