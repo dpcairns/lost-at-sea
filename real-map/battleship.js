@@ -154,10 +154,12 @@ function fireTorpedo(e) {
 			// increment hitCount each time a ship is hit
             hitCount++;
             totalClicks++;
+            const hiddenButton = document.getElementById('hidden-button');
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
                 localStorage.setItem(JSON.stringify(totalClicks), JSON.stringify(hitCount));
+                hiddenButton.classList.remove('hidden');
 
             }
 			
