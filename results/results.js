@@ -19,6 +19,7 @@ avatarField.src = user.avatar;
 hitField.innerText = user.hits;
 clickField.innerText = user.clicks;
 
+
 // This calculates the accuracy if we want to use it!! :))
 
 if (user.clicks > 0) {
