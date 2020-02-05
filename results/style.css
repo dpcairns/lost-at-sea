@@ -20,7 +20,7 @@ body::after {
     margin: 0 auto;
 }
 header{
-    background:#A9CBB7;
+    background:rgb(151, 178, 179);
     padding: 10px 0;
 }
 header::after{
@@ -44,7 +44,7 @@ padding-top: 20px;
 font-size: 20px;
 }
 a{
-    color: #07393C;
+    color: rgb(75, 97, 99);
 }
 h1{
     position: absolute;
@@ -54,7 +54,7 @@ h1{
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Cinzel', serif;
+    font-family: 'Fredericka the Great', cursive;
     font-size: 60px;
     top: 30%;
     font-weight: 900;
@@ -67,7 +67,7 @@ h2{
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Cinzel', serif;
+    font-family: 'Fredericka the Great', cursive;
     font-size: 40px;
     top: 400px;
 }
@@ -79,7 +79,7 @@ h2{
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Cinzel', serif;
+    font-family: 'Fredericka the Great', cursive;
     font-size: 30px;
     top: 450px;
 }
@@ -91,7 +91,7 @@ h2{
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Cinzel', serif;
+    font-family: 'Fredericka the Great', cursive;
     font-size: 30px;
     top: 500px;
 }
