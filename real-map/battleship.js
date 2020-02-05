@@ -38,7 +38,7 @@ for (i = 0; i < cols; i++) {
       Submarine   - 3 hits
       Patrol Boat - 2 hits
 */
-const hitCount = 0;
+let hitCount = 0;
 
 /* create the 2d array that will contain the status of each square on the board
    and place ships on the board (later, create function for random placement!)
