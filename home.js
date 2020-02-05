@@ -4,7 +4,7 @@ const avatars = document.getElementsByClassName('avatar');
 for (let avatar of avatars) {
     avatar.addEventListener('click', () => {
         const nameField = document.getElementById('username');
-        saveUser({ username: nameField.value, avatar: avatar.src });
+        saveUser({ username: nameField.value, avatar: avatar.src, clicks: 0, hits: 0 });
         window.location = '../results/results.html';
     });
 }

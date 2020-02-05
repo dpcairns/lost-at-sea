@@ -24,11 +24,13 @@
             Your adventure has ended.
         </p>
         <p>
-            You won in X number of clicks.
+            You won in <span id="clicks"></span> number of clicks (<span id="hits"></span> hits).
         </p>
-        <p>Accuracy: </p>
-        <p>High Scores: [clicks, hits, percentage]
-        </p>
+        <p>Accuracy: <span id="accuracy"></span></p>
+        <div>
+            High Scores: [clicks, hits, percentage]
+            <ul id="high-scores"></ul>
+        </div>
         <p id="story-display"></p>
         <img id="result-image">
         <p>
@@ -37,6 +39,6 @@
     </main>
     </center>
     <script type="module" src="../results/results.js"></script>
-    <script type="module" src="../api.js"></script>
+    <script type="module" src="../app.js"></script>
 </body>
 </html>
