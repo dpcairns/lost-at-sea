@@ -69,12 +69,12 @@ const boats = {
 };
 
 
-for (let k = 0; k < boats.length; k++);
-let randomLocation1 = [1, Math.floor(Math.random() * 6)];
-let randomLocation2 = [2, Math.floor(Math.random() * 7)];
-let randomLocation3 = [6, Math.floor(Math.random() * 7)];
-let randomLocation4 = [9, Math.floor(Math.random() * 8)];
-let randomLocation5 = [4, Math.floor(Math.random() * 6)];
+// for (let k = 0; k < boats.length; k++);
+// let randomLocation1 = [1, Math.floor(Math.random() * 6)];
+// let randomLocation2 = [2, Math.floor(Math.random() * 7)];
+// let randomLocation3 = [6, Math.floor(Math.random() * 7)];
+// let randomLocation4 = [9, Math.floor(Math.random() * 8)];
+// let randomLocation5 = [4, Math.floor(Math.random() * 6)];
 
 
 placeBoatsOne();
@@ -86,7 +86,7 @@ function placeBoatsOne() {
         const y = availbleArrayIndex.splice(Math.floor(availbleArrayIndex.length * Math.random()), 1);
         
         
-        gameBoard[y[0]][Math.floor(Math.random() * 6)] = i + 2;
+        gameBoard[y[0]][Math.floor(Math.random() * 6)] = i + 1;
         
     }
     
@@ -125,22 +125,22 @@ function placeBoatsOne() {
 //     gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5
 // ];
 
-function compareCoord(array1, array2) {
-    if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
-        return true;
-    }
-    else false;
-}
+// function compareCoord(array1, array2) {
+//     if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
+//         return true;
+//     }
+//     else false;
+// }
 
-while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
-    randomLocation2 = Math.floor(Math.random() * 6);   
-}
-while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
-    randomLocation3 = Math.floor(Math.random() * 6);
-}
-while (!compareCoord(randomLocation1, randomLocation4)) {
-    randomLocation4 = Math.floor(Math.random() * 6);
-}
+// while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
+//     randomLocation2 = Math.floor(Math.random() * 6);   
+// }
+// while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
+//     randomLocation3 = Math.floor(Math.random() * 6);
+// }
+// while (!compareCoord(randomLocation1, randomLocation4)) {
+//     randomLocation4 = Math.floor(Math.random() * 6);
+// }
 
 
 console.log(JSON.stringify(gameBoard));
