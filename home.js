@@ -7,5 +7,5 @@ userSignUp.addEventListener('click', () => {
     const avatarField = document.querySelector('input[name="avatar"]:checked').value;
 
     saveUser({ username: nameField.value, avatar: avatarField });
-    window.location = 'map'; 
+    window.location = '../results/results.html'; 
 });
