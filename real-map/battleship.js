@@ -170,3 +170,8 @@ function fireTorpedo(e) {
     }
     e.stopPropagation();
 }
+
+const guy = document.getElementById('hidden-button');
+guy.addEventListener('click', () => {
+    window.location = '../results/index.html';
+});
