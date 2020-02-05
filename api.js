@@ -1,5 +1,3 @@
-
-
 export function saveUser(username, image) {
     localStorage.setItem('user', JSON.stringify({ name: username, image: image }));
 
@@ -31,4 +29,4 @@ export function addPoints(points) {
 }
 
 export { saveUser }
-// for storing user data
+// for storing user datas
