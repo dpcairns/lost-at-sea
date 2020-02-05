@@ -39,6 +39,7 @@ for (i = 0; i < cols; i++) {
       Patrol Boat - 2 hits
 */
 let hitCount = 0;
+let totalClicks = 0;
 
 /* create the 2d array that will contain the status of each square on the board
    and place ships on the board (later, create function for random placement!)
@@ -139,7 +140,9 @@ function fireTorpedo(e) {
         if (gameBoard[row][col] === 0) {
             e.target.style.background = '#bbb';
 			// set this square's value to 3 to indicate that they fired and missed
-            gameBoard[row][col] = 8;
+            gameBoard[row][col] = 7;
+            totalClicks++;
+            console.log(totalClicks);
 			
 		// if player clicks a square with a ship, change the color and change square's value
         } else if (gameBoard[row][col] === 1 ||
@@ -150,6 +153,7 @@ function fireTorpedo(e) {
 			
 			// increment hitCount each time a ship is hit
             hitCount++;
+            totalClicks++;
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
