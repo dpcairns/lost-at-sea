@@ -158,9 +158,13 @@ function fireTorpedo(e) {
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
-                localStorage.setItem(JSON.stringify(totalClicks), JSON.stringify(hitCount));
+                const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
+                const addHit = localStorage.setItem('hit-count', (hitCount));
                 hiddenButton.classList.remove('hidden');
 
+                console.log(addClick);
+                console.log('=======');
+                console.log(addHit);
             }
 			
 		// if player clicks a square that's been previously hit, let them know
@@ -171,7 +175,7 @@ function fireTorpedo(e) {
     e.stopPropagation();
 }
 
-const guy = document.getElementById('hidden-button');
-guy.addEventListener('click', () => {
+const button = document.getElementById('hidden-button');
+button.addEventListener('click', () => {
     window.location = '../results/index.html';
 });
