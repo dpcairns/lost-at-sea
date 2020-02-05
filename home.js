@@ -1,6 +1,6 @@
 import { saveUser } from './app.js';
 
-const userSignUp = document.getElementById('userCreate');
+const userSignUp = document.getElementById('userSignUp');
 
 userSignUp.addEventListener('click', () => {
     const nameField = document.getElementById('username');
