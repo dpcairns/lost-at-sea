@@ -1,35 +1,93 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-html{
-    background-image: url(./assets/sinkboat.jpg);
-    
-}
-h1{
-    font-family: 'Rye', cursive;
-    font-size: 60px;
-    color: rgb(19, 18, 18);
-}
 body{
+    margin: 0;
+}
+body::after {
+    background: url(./assets/sinkboat.jpg);
+    content: "";
+    opacity: 0.6;
     position: absolute;
     top: 0;
+    bottom: 0;
+    right: 0;
     left: 0;
-    z-index: 2;
+    z-index: -1;  
+  }
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+header{
+    background:rgb(129, 165, 177);
+    padding: 10px 0;
+}
+header::after{
+    content: '';
+    display: table;
+    clear: both ;
+}
+nav{
+    float: right;
+  
+}
+nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav li{
+display: inline-block;
+margin-left: 70px ;
+padding-top: 20px;
+font-size: 20px;
+}
+a{
+    color: white;
+}
+h1{
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
     padding: 25px;
     text-align: center; 
-} 
-h2{
-    font-family: 'Inknut Antiqua', serif;
-    font-size: 40px;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 60px;
+    top: 30%;
 }
-p{
-    font-family: 'Inknut Antiqua', serif;
-    font-size: 20px; 
+h2{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 25px;
+    text-align: center; 
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 40px;
+    top: 350px;
+}
+#status{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 25px;
+    text-align: center; 
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 30px;
+    top: 450px;
+}
+#hits{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 25px;
+    text-align: center; 
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 30px;
+    top: 500px;
 }
