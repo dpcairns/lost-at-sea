@@ -1,17 +1,10 @@
-const userSignUp = document.getElementById('user-sign-up');
+import { saveUser } from './app.js';
 
-userSignUp.addEventListener('enter', function (event) {
-
-    event.preventDefault();
-
-
-    const formData = new FormData(userSignUp);
-   
-    const user = makeUser(formData);
-
-
-    saveUser(user);
-
-
-    window.location = 'map';
-});
+const avatars = document.getElementsByClassName('avatar');
+for (let avatar of avatars) {
+    avatar.addEventListener('click', () => {
+        const nameField = document.getElementById('username');
+        saveUser({ username: nameField.value, avatar: avatar.src });
+        window.location = '../results/results.html';
+    });
+}

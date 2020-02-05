@@ -1,20 +1,15 @@
-body {
-    background: white;
-    text-align: center;
-    text-decoration: double;
-    text-shadow: black;
-    color: black;
+#avatars {
+    height: 110px;
 }
-h1 {
-    font-style: italic;
-}
-h3 {
-    font-style: italic;
-}
-span {
 
-    font-style: italic;
+#avatars img {
+    padding-top: 10px;
+    height: 100px;
+    width: 100px;
 }
-legend {
-    font-style: italic;
+
+#avatars img:hover {
+    padding-top: 0;
+    height: 110px;
+    width: 110px;
 }
