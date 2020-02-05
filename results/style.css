@@ -2,15 +2,18 @@ body{
     margin: 0;
 }
 body::after {
-    background: url(../assets/sunset4.jpeg);
+    background: url(../assets/sunset.jpg);
     content: "";
     opacity: 0.9;
     position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
     top: 0;
     bottom: 0;
     right: 0;
     left:0 ;
     z-index: -1;  
+
   }
 .container{
     width: 80%;
