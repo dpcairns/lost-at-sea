@@ -157,6 +157,8 @@ function fireTorpedo(e) {
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
+                localStorage.setItem(JSON.stringify(totalClicks), JSON.stringify(hitCount));
+
             }
 			
 		// if player clicks a square that's been previously hit, let them know
