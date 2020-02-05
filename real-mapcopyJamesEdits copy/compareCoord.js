@@ -6,3 +6,7 @@ function compareCoord(array1, array2) {
 }
 
 export default compareCoord;
+
+function placeBoat(boat, gameBoard) {
+    if ()
+}
