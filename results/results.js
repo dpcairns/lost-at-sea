@@ -1,6 +1,6 @@
 import { getUser } from '../app.js';
 
-const nameField = document.getElementById('name');
+const nameField = document.getElementById('username');
 const avatarField = document.getElementById('avatar');
 const user = getUser();
 
