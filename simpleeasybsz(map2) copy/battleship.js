@@ -11,21 +11,21 @@ const gameBoardContainer = document.getElementById('gameboard');
 // make the grid columns and rows
 for (i = 0; i < cols; i++) {
     for (j = 0; j < rows; j++) {
-		
-		// create a new div HTML element for each grid square and make it the right size
+
+        // create a new div HTML element for each grid square and make it the right size
         const square = document.createElement('div');
         gameBoardContainer.appendChild(square);
 
-    // give each div element a unique id based on its row and column, like "s00"
-        square.id = 's' + j + i;			
-		
-		// set each grid square's coordinates: multiples of the current row or column number
+        // give each div element a unique id based on its row and column, like "s00"
+        square.id = 's' + j + i;
+
+        // set each grid square's coordinates: multiples of the current row or column number
         const topPosition = j * squareSize;
-        const leftPosition = i * squareSize;			
-		
-		// use CSS absolute positioning to place each grid square on the page
+        const leftPosition = i * squareSize;
+
+        // use CSS absolute positioning to place each grid square on the page
         square.style.top = topPosition + 'px';
-        square.style.left = leftPosition + 'px';						
+        square.style.left = leftPosition + 'px';
     }
 }
 
@@ -38,7 +38,15 @@ for (i = 0; i < cols; i++) {
       Submarine   - 3 hits
       Patrol Boat - 2 hits
 */
-const hitCount = 0;
+const boats = {
+    one: 1,
+    two: 2,
+    three: 3,
+    four: 3,
+    five: 4,
+
+
+};
 
 /* create the 2d array that will contain the status of each square on the board
    and place ships on the board (later, create function for random placement!)
@@ -46,7 +54,7 @@ const hitCount = 0;
 */
 const gameBoard = [
 
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -58,79 +66,177 @@ const gameBoard = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
-let randomLocationX = Math.floor(Math.random() * 9);
-console.log(randomLocationX);
-let randomLocationY = Math.floor(Math.random() * 9);
-let randomLocation3 = Math.floor(Math.random() * 9);
-let randomLocation4 = Math.floor(Math.random() * 9);
-let randomLocation5 = Math.floor(Math.random() * 9);
-let randomLocation6 = Math.floor(Math.random() * 9);const randomLocation7 = Math.floor(Math.random() * 9);const randomLocation8 = Math.floor(Math.random() * 9);const randomLocation9 = Math.floor(Math.random() * 9);const randomLocation10 = Math.floor(Math.random() * 9);
+placeBoatsOne();
 
-
-// if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3)
-newFunction();
-console.log(JSON.stringify(gameBoard));
-// set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
-gameBoardContainer.addEventListener('click', fireCannon, false);
-
-function newFunction() {
-    for (let i = 0; i < gameBoard.length; i++)
-        ;
-    gameBoard[randomLocationY][randomLocationX] = 1;
-    gameBoard[randomLocationY][randomLocationX + 1] = 1;
-    gameBoard[randomLocationY][randomLocationX += 2] = 1;
-    gameBoard[randomLocation3][randomLocation4] = 2;
-    gameBoard[randomLocation3][randomLocation4 + 1] = 2;
-    gameBoard[randomLocation3][randomLocation4 += 2] = 2;
-    gameBoard[randomLocation5][randomLocation6] = 3;
-    gameBoard[randomLocation5][randomLocation6 + 1] = 3;
-    gameBoard[randomLocation7][randomLocation8] = 4;
-    gameBoard[randomLocation9][randomLocation10] = 5;
-}
-
-function randomNum () {
-
-    let locationOne = randomNum;
-    let locationTwo = locationOne + 1;
-    let locationThree = locationTwo + 1;
-}
-// initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
-function fireCannon(e) {
-    // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
+function placeBoatsOne() {
+    const availbleArrayIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    const numberOfBoats = Object.keys(boats).length;
+    for (let i = 0; i < numberOfBoats; i++) {
+        const y = availbleArrayIndex.splice(Math.floor(availbleArrayIndex.length * Math.random()), 1);
     
-    if (e.target !== e.currentTarget) {
-        // extract row and column # from the HTML element's id
-        const row = e.target.id.substring(1, 2);
-        const col = e.target.id.substring(2, 3);
-        //alert("Clicked on row " + row + ", col " + col);
-				
-		// if player clicks a square with no ship, change the color and change square's value
-        if (gameBoard[row][col] === 0) {
-            e.target.style.background = '#bbb';
-			// set this square's value to 3 to indicate that they fired and missed
-            gameBoard[row][col] = 3;
-			
-		// if player clicks a square with a ship, change the color and change square's value
-        } else if (gameBoard[row][col] === 1) {
-            e.target.style.background = 'red';
-			// set this square's value to 2 to indicate the ship has been hit
-       
-        } else if (gameBoard[row][col] === 2) {
-            e.target.style.background = 'blue';
-			// set this square's value to 2 to indicate the ship has been hit
-        } else if (gameBoard[row][col] === 3) {
-            e.target.style.background = 'green';
-			
-        } else if (gameBoard[row][col] === 4) {
-            e.target.style.background = 'yellow';
-			// increment hitCount each time a ship is hit
-            
-			
-			
-		// if player clicks a square that's been previously hit, let them know
-        } else if (gameBoard[row][col] > 1) {
-            // alert('Stop wasting your torpedos! You already fired at this location.');
-        }		
+        console.log(y);
+        gameBoard[y[0]][Math.floor(Math.random() * 6)] = i + 1;
+
     }
-    e.stopPropagation();
+
+    // const y = availbleArrayIndex.splice(Math.floor(availbleArrayIndex.length * Math.random()), 1);
+    
+    // for (let k = 0; k < gameBoard.length; k++);
+    // gameBoard[location1[0]][location1[1]] = 1;
+    // gameBoard[location1[0]][location1[1] + 1] = 1;
+    // gameBoard[location1[0]][location1[1] + 2] = 1;
+    // console.log(y[1]);
+    console.log(gameBoard);
+    
+    
+    // let location2 = [y, Math.floor(Math.random() * 6)];
+    // const boats[1] = location1  
+
+
+    // function placeBoatsTwo() {
+    //     const availbleArrayIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    //     const numberOfBoats = Object.keys(boats).length;
+    //     for (let i = 0; i < numberOfBoats; i++) {
+    //         const x = availbleArrayIndex.splice(Math.floor(availbleArrayIndex.length * Math.random()), 1);
+    //         console.log(y);
+
+    //     }
+    // }
+
+    // const x = availbleArrayIndex.splice(Math.floor(availbleArrayIndex.length * Math.random()), 1);
+    // let location2 = [y, Math.floor(Math.random() * 6)];
+    
+    // for (let k = 0; k < gameBoard.length; k++);
+    // gameBoard[location2[0]][location2[1]] = 2;
+    // gameBoard[location2[0]][location2[1] + 1] = 1;
+    // gameBoard[location2[0]][location2[1] + 2] = 1;
+    // // let location3 = location2 + 1;
+    // // let randomNum = [];
+    
+    
+        // }
+        // console.log(removefromAvailible);
+    
+        //into the gameboard  that is the Ylocation is removed from another boat landing in this row
+        //run it again so it places next ship, until all ships are placed
+    
+    
+        // const randomPlacement = availbleArrayIndex[Math.floor(availbleArrayIndex.length * Math.random())];
+    
+        // function getAndRemoveAvailbleIndex(availbleArrayIndex, 1) {
+    
+        //we need this function to get 1 number out of the array, remove it, and return the removed value
+        //
+    
+
+
+    // const randomLocation1 = [Math.floor(Math.random() * 6), Math.floor(Math.random() * 6)];
+    // let randomLocation2 = [Math.floor(Math.random() * 7), Math.floor(Math.random() * 7)];
+    // let randomLocation3 = [Math.floor(Math.random() * 7), Math.floor(Math.random() * 7)];
+    // let randomLocation4 = [Math.floor(Math.random() * 8), Math.floor(Math.random() * 8)];
+
+
+
+    // if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
+
+
+
+    // gameBoard[randomLocation1[0]][randomLocation1[1]] = 1;
+    // gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1;
+    // gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1;
+    // gameBoard[randomLocation2[0]][randomLocation2[1]] = 2;
+    // gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2;
+    // gameBoard[randomLocation2[0]][randomLocation2[1] + 2] = 2;
+    // gameBoard[randomLocation3[0]][randomLocation3[1]] = 3;
+    // gameBoard[randomLocation3[0]][randomLocation3[1] + 1] = 3;
+    // gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3;
+    // gameBoard[randomLocation4[0]][randomLocation4[1]] = 4;
+    // gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4;
+
+    // function compareCoord(array1, array2) {
+    //     if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
+    //         return true;
+    //     } else false;
+    // }
+
+    // while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
+    //     randomLocation2 = Math.floor(Math.random() * 6);
+    //     randomLocation2[0] + 1;
+
+    // }
+    // while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
+    //     randomLocation3 = Math.floor(Math.random() * 6);
+    // }
+    // while (!compareCoord(randomLocation1, randomLocation4)) {
+    //     randomLocation4 = Math.floor(Math.random() * 6);
+    // }
+
+
+    // if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3)
+    // newFunction();
+    console.log(JSON.stringify(gameBoard));
+    // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
+    gameBoardContainer.addEventListener('click', fireCannon, false);
+
+    function newFunction() {
+        for (let i = 0; i < gameBoard.length; i++)
+            ;
+        gameBoard[randomLocationY][randomLocationX] = 1;
+        gameBoard[randomLocationY][randomLocationX + 1] = 1;
+        gameBoard[randomLocationY][randomLocationX += 2] = 1;
+        gameBoard[randomLocation3][randomLocation4] = 2;
+        gameBoard[randomLocation3][randomLocation4 + 1] = 2;
+        gameBoard[randomLocation3][randomLocation4 += 2] = 2;
+        gameBoard[randomLocation5][randomLocation6] = 3;
+        gameBoard[randomLocation5][randomLocation6 + 1] = 3;
+        gameBoard[randomLocation7][randomLocation8] = 4;
+        gameBoard[randomLocation9][randomLocation10] = 5;
+    }
+
+    // function randomNum () {
+
+    //     let locationOne = randomNum;
+    //     let locationTwo = locationOne + 1;
+    //     let locationThree = locationTwo + 1;
+    // }
+    // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
+    function fireCannon(e) {
+        // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
+
+        if (e.target !== e.currentTarget) {
+            // extract row and column # from the HTML element's id
+            const row = e.target.id.substring(1, 2);
+            const col = e.target.id.substring(2, 3);
+            //alert("Clicked on row " + row + ", col " + col);
+
+            // if player clicks a square with no ship, change the color and change square's value
+            if (gameBoard[row][col] === 0) {
+                e.target.style.background = '#bbb';
+                // set this square's value to 3 to indicate that they fired and missed
+                gameBoard[row][col] = 3;
+
+                // if player clicks a square with a ship, change the color and change square's value
+            } else if (gameBoard[row][col] === 1) {
+                e.target.style.background = 'red';
+                // set this square's value to 2 to indicate the ship has been hit
+
+            } else if (gameBoard[row][col] === 2) {
+                e.target.style.background = 'blue';
+                // set this square's value to 2 to indicate the ship has been hit
+            } else if (gameBoard[row][col] === 3) {
+                e.target.style.background = 'green';
+
+            } else if (gameBoard[row][col] === 4) {
+                e.target.style.background = 'yellow';
+                // increment hitCount each time a ship is hit
+
+
+
+                // if player clicks a square that's been previously hit, let them know
+            } else if (gameBoard[row][col] > 1) {
+                // alert('Stop wasting your torpedos! You already fired at this location.');
+            }
+        }
+        e.stopPropagation();
+    }
 }
