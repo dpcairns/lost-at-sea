@@ -1,11 +1,10 @@
 import { saveUser } from './app.js';
 
-const userSignUp = document.getElementById('userSignUp');
-
-userSignUp.addEventListener('click', () => {
-    const nameField = document.getElementById('username');
-    const avatarField = document.querySelector('input[name="avatar"]:checked').value;
-
-    saveUser({ username: nameField.value, avatar: avatarField });
-    window.location = '../results/results.html'; 
-});
+const avatars = document.getElementsByClassName('avatar');
+for (let avatar of avatars) {
+    avatar.addEventListener('click', () => {
+        const nameField = document.getElementById('username');
+        saveUser({ username: nameField.value, avatar: avatar.src });
+        window.location = '../results/results.html';
+    });
+}
