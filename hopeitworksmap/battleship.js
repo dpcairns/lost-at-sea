@@ -11,18 +11,18 @@ const gameBoardContainer = document.getElementById('gameboard');
 // make the grid columns and rows
 for (i = 0; i < cols; i++) {
     for (j = 0; j < rows; j++) {
-		
+
 		// create a new div HTML element for each grid square and make it the right size
         const square = document.createElement('div');
         gameBoardContainer.appendChild(square);
 
     // give each div element a unique id based on its row and column, like "s00"
         square.id = 's' + j + i;			
-		
+
 		// set each grid square's coordinates: multiples of the current row or column number
         const topPosition = j * squareSize;
         const leftPosition = i * squareSize;			
-		
+
 		// use CSS absolute positioning to place each grid square on the page
         square.style.top = topPosition + 'px';
         square.style.left = leftPosition + 'px';						
@@ -44,10 +44,8 @@ const boats = {
     two: 2,
     three: 3,
     four: 4,
-    five: 4,
-
+    five: 5,
 };
-
 /* create the 2d array that will contain the status of each square on the board
    and place ships on the board (later, create function for random placement!)
    0 = empty, 1 = part of a ship, 2 = a sunken part of a ship, 3 = a missed shot
@@ -66,11 +64,6 @@ const gameBoard = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
-const randomLocation1 = [Math.floor(Math.random() * 6), Math.floor(Math.random() * 6)];
-let randomLocation2 = [Math.floor(Math.random() * 7), Math.floor(Math.random() * 7)];
-let randomLocation3 = [Math.floor(Math.random() * 7), Math.floor(Math.random() * 7)];
-let randomLocation4 = [Math.floor(Math.random() * 8), Math.floor(Math.random() * 8)];
-
 placeBoatsOne();
 
 function placeBoatsOne() {
@@ -78,15 +71,18 @@ function placeBoatsOne() {
     const numberOfBoats = Object.keys(boats).length;
     for (let i = 0; i < numberOfBoats; i++) {
         const y = availbleArrayIndex.splice(Math.floor(availbleArrayIndex.length * Math.random()), 1);
-        
-    
-        gameBoard[y[0]][Math.floor(Math.random() * 6)] = i + 2;
+
+
+        gameBoard[y[0]][Math.floor(Math.random() * 6)] = i + 1;
 
     }
-    
-    for (let k = 0; k < gameBoard.length; k++);
-    console.log(JSON.stringify(gameBoard));
 
+    console.log(JSON.stringify(gameBoard));
+    
+    const randomLocation1 = [Math.floor(Math.random() * 6), Math.floor(Math.random() * 6)];
+    let randomLocation2 = [Math.floor(Math.random() * 7), Math.floor(Math.random() * 7)];
+    let randomLocation3 = [Math.floor(Math.random() * 7), Math.floor(Math.random() * 7)];
+    let randomLocation4 = [Math.floor(Math.random() * 8), Math.floor(Math.random() * 8)];
 
     function compareCoord(array1, array2) {
         if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
@@ -98,7 +94,7 @@ function placeBoatsOne() {
     while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
         randomLocation2 = Math.floor(Math.random() * 6);
         randomLocation2[0] + 1;
-   
+
     }
     while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
         randomLocation3 = Math.floor(Math.random() * 6);
@@ -107,46 +103,44 @@ function placeBoatsOne() {
         randomLocation4 = Math.floor(Math.random() * 6);
     }
 
-
-    // console.log(JSON.stringify(gameBoard));
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
     gameBoardContainer.addEventListener('click', fireTorpedo, false);
 
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
     function fireTorpedo(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
-    
+
         if (e.target !== e.currentTarget) {
         // extract row and column # from the HTML element's id
             const row = e.target.id.substring(1, 2);
             const col = e.target.id.substring(2, 3);
         //alert("Clicked on row " + row + ", col " + col);
-				
+
 		// if player clicks a square with no ship, change the color and change square's value
             if (gameBoard[row][col] === 0) {
                 e.target.style.background = '#bbb';
 			// set this square's value to 3 to indicate that they fired and missed
                 gameBoard[row][col] = 3;
-			
+
 		// if player clicks a square with a ship, change the color and change square's value
             } else if (gameBoard[row][col] === 1 ||
             gameBoard[row][col] === 2 || gameBoard[row][col] === 3 || gameBoard[row][col] === 4) {
                 e.target.style.background = 'red';
 			// set this square's value to 2 to indicate the ship has been hit
                 gameBoard[row][col] = 2;
-			
+
 			// increment hitCount each time a ship is hit
                 hitCount++;
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
                 if (hitCount === 17) {
                     alert('All enemy battleships have been defeated! You win!');
                 }
-			
+
 		// if player clicks a square that's been previously hit, let them know
             } else if (gameBoard[row][col] > 1) {
                 alert('Stop wasting your torpedos! You already fired at this location.');
             }		
         }
-        e.stopPropagation();
     }
-};
+    // e.stopPropagation();
+}
