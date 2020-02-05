@@ -41,3 +41,6 @@ p, button, input {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
+.hidden {
+	display: none;
+}
