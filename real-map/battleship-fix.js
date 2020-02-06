@@ -1,5 +1,11 @@
 // import compareCoord from './compareCoord.js';
 
+// You need to use <script type="module" ...> in order to import functions
+// Add this import line
+// On lines (in this file), 149, 161, 162, insert addClick(); and addHit();
+// See below for correct placement
+import { addClick, addHit } from '../app.js';
+
 // set grid rows and columns and the size of each square
 const rows = 10;
 const cols = 10;
@@ -9,8 +15,8 @@ const squareSize = 50;
 const gameBoardContainer = document.getElementById('gameboard');
 
 // make the grid columns and rows
-for (i = 0; i < cols; i++) {
-    for (j = 0; j < rows; j++) {
+for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
 
         // create a new div HTML element for each grid square and make it the right size
         const square = document.createElement('div');
@@ -66,42 +72,42 @@ let randomLocation1 = [1, Math.floor(Math.random() * 6)];
 let randomLocation2 = [2, Math.floor(Math.random() * 7)];
 let randomLocation3 = [6, Math.floor(Math.random() * 7)];
 let randomLocation4 = [9, Math.floor(Math.random() * 8)];
-let randomLocation5 = [4, Math.floor(Math.random() * 6)];
+// let randomLocation5 = [4, Math.floor(Math.random() * 6)];
 
 
 
 // if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
 
 
-for (let k = 0; k < gameBoard.length; k++);
+// for (let k = 0; k < gameBoard.length; k++);
 
-let boatOne = [
-    gameBoard[randomLocation1[0]][randomLocation1[1]] = 1,
-    gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1,
-    gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1,
+// let boatOne = [
+//     gameBoard[randomLocation1[0]][randomLocation1[1]] = 1,
+//     gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1,
+//     gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1,
 
-];
-let boatTwo = [
-    gameBoard[randomLocation2[0]][randomLocation2[1]] = 2,
-    gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2,
-    gameBoard[randomLocation2[0]][randomLocation2[1] + 2] = 2,
-    gameBoard[randomLocation2[0]][randomLocation2[1] + 3] = 2
-];
-let boatThree = [
-    gameBoard[randomLocation3[0]][randomLocation3[1]] = 3,
-    gameBoard[randomLocation3[0]][randomLocation3[1] + 1] = 3,
-    gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3
-];
-let boatFour = [
-    gameBoard[randomLocation4[0]][randomLocation4[1]] = 4,
-    gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4
-];
-let boatFive = [
-    gameBoard[randomLocation5[0]][randomLocation5[1]] = 5,
-    gameBoard[randomLocation5[0]][randomLocation5[1] + 1] = 5,
-    gameBoard[randomLocation5[0]][randomLocation5[1] + 2] = 5,
-    gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5
-];
+// ];
+// let boatTwo = [
+//     gameBoard[randomLocation2[0]][randomLocation2[1]] = 2,
+//     gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2,
+//     gameBoard[randomLocation2[0]][randomLocation2[1] + 2] = 2,
+//     gameBoard[randomLocation2[0]][randomLocation2[1] + 3] = 2
+// ];
+// let boatThree = [
+//     gameBoard[randomLocation3[0]][randomLocation3[1]] = 3,
+//     gameBoard[randomLocation3[0]][randomLocation3[1] + 1] = 3,
+//     gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3
+// ];
+// let boatFour = [
+//     gameBoard[randomLocation4[0]][randomLocation4[1]] = 4,
+//     gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4
+// ];
+// let boatFive = [
+//     gameBoard[randomLocation5[0]][randomLocation5[1]] = 5,
+//     gameBoard[randomLocation5[0]][randomLocation5[1] + 1] = 5,
+//     gameBoard[randomLocation5[0]][randomLocation5[1] + 2] = 5,
+//     gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5
+// ];
 
 function compareCoord(array1, array2) {
     if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
@@ -140,6 +146,7 @@ function fireTorpedo(e) {
             // set this square's value to 3 to indicate that they fired and missed
             gameBoard[row][col] = 7;
             totalClicks++;
+            addClick();
             console.log(totalClicks);
 
             // if player clicks a square with a ship, change the color and change square's value
@@ -152,20 +159,22 @@ function fireTorpedo(e) {
             // increment hitCount each time a ship is hit
             hitCount++;
             totalClicks++;
+            addHit();
+            addClick();
             const hiddenButton = document.getElementById('hidden-button');
             if (hitCount === 8)
                 alert('Looks like you hit some ships! keep up the good work sailor!');
             // this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
-                const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
-                const addHit = localStorage.setItem('hit-count', (hitCount));
-                const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
+                // const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
+                // const addHit = localStorage.setItem('hit-count', (hitCount));
+                // const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
                 hiddenButton.classList.remove('hidden');
 
-                console.log(addClick);
-                console.log('=======');
-                console.log(addHit);
+                // console.log(addClick);
+                // console.log('=======');
+                // console.log(addHit);
             }
 
             // if player clicks a square that's been previously hit, let them know

@@ -1,4 +1,4 @@
-/* #avatars {
+/* /* #avatars {
     height: 110px;
 }
 
@@ -17,15 +17,24 @@
 #high-scores {
     list-style-type: none;
 }
+
+#high-scores .name,
+#high-scores .clicks,
+#high-scores .accuracy {
+    display: inline-block;
+    width: 150px;
+} */
+
 body{
     margin: 0;
+    padding: 0;
     align-items: center;
     justify-content: center;
 }
 body::after{
-    background: url(../lost-at-sea/assets/ocean1.jpeg);
+    background: url(./assets/ocean3.jpeg);
     content: "";
-    opacity: 0.9;
+    opacity: 0.7;
     position: absolute;
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,12 +43,20 @@ body::after{
     right: 0;
     left:0 ;
     z-index: -1; 
-} */
+} 
 
-img{
+/* img{
     height: 110px;
     border-style: solid;
     border-width:1px ;
     border-radius: 50%;
+    background-color: white;
+} */
+.login-box{
+    width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
 }
-
