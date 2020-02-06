@@ -17,6 +17,14 @@
 #high-scores {
     list-style-type: none;
 }
+
+#high-scores .name,
+#high-scores .clicks,
+#high-scores .accuracy {
+    display: inline-block;
+    width: 150px;
+}
+
 body{
     margin: 0;
     align-items: center;
