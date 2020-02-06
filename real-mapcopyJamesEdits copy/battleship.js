@@ -11,21 +11,21 @@ const gameBoardContainer = document.getElementById('gameboard');
 // make the grid columns and rows
 for (i = 0; i < cols; i++) {
     for (j = 0; j < rows; j++) {
-		
-		// create a new div HTML element for each grid square and make it the right size
+
+        // create a new div HTML element for each grid square and make it the right size
         const square = document.createElement('div');
         gameBoardContainer.appendChild(square);
 
-    // give each div element a unique id based on its row and column, like "s00"
-        square.id = 's' + j + i;			
-		
-		// set each grid square's coordinates: multiples of the current row or column number
+        // give each div element a unique id based on its row and column, like "s00"
+        square.id = 's' + j + i;
+
+        // set each grid square's coordinates: multiples of the current row or column number
         const topPosition = j * squareSize;
-        const leftPosition = i * squareSize;			
-		
-		// use CSS absolute positioning to place each grid square on the page
+        const leftPosition = i * squareSize;
+
+        // use CSS absolute positioning to place each grid square on the page
         square.style.top = topPosition + 'px';
-        square.style.left = leftPosition + 'px';						
+        square.style.left = leftPosition + 'px';
     }
 }
 
@@ -84,12 +84,12 @@ function placeBoatsOne() {
     const numberOfBoats = Object.keys(boats).length;
     for (let i = 0; i < numberOfBoats; i++) {
         const y = availbleArrayIndex.splice(Math.floor(availbleArrayIndex.length * Math.random()), 1);
-        
-        
+
+
         gameBoard[y[0]][Math.floor(Math.random() * 6)] = i + 1;
-        
+
     }
-    
+
     // console.log(JSON.stringify(gameBoard));
 }
 
@@ -150,37 +150,37 @@ gameBoardContainer.addEventListener('click', fireTorpedo, false);
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
-    
+
     if (e.target !== e.currentTarget) {
         // extract row and column # from the HTML element's id
         const row = e.target.id.substring(1, 2);
         const col = e.target.id.substring(2, 3);
         //alert("Clicked on row " + row + ", col " + col);
-				
-		// if player clicks a square with no ship, change the color and change square's value
+
+        // if player clicks a square with no ship, change the color and change square's value
         if (gameBoard[row][col] === 0) {
             e.target.style.background = '#bbb';
-			// set this square's value to 3 to indicate that they fired and missed
+            // set this square's value to 3 to indicate that they fired and missed
             gameBoard[row][col] = 8;
-			
-		// if player clicks a square with a ship, change the color and change square's value
+
+            // if player clicks a square with a ship, change the color and change square's value
         } else if (gameBoard[row][col] === 1 ||
             gameBoard[row][col] === 2 || gameBoard[row][col] === 3 || gameBoard[row][col] === 4 || gameBoard[row][col] === 5) {
             e.target.style.background = 'red';
-			// set this square's value to 2 to indicate the ship has been hit
+            // set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 8;
-			
-			// increment hitCount each time a ship is hit
+
+            // increment hitCount each time a ship is hit
             hitCount++;
-			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
+            // this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
             }
-			
-		// if player clicks a square that's been previously hit, let them know
+
+            // if player clicks a square that's been previously hit, let them know
         } else if (gameBoard[row][col] > 1) {
             alert('Stop wasting your torpedos! You already fired at this location.');
-        }		
+        }
     }
     e.stopPropagation();
-}
+};

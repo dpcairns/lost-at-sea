@@ -160,6 +160,7 @@ function fireTorpedo(e) {
                 alert('All enemy battleships have been defeated! You win!');
                 const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
                 const addHit = localStorage.setItem('hit-count', (hitCount));
+                const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
                 hiddenButton.classList.remove('hidden');
 
                 console.log(addClick);
