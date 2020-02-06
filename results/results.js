@@ -1,5 +1,4 @@
 import { getUser, saveHighScore, getHighScores } from '../app.js';
-
 const nameField = document.getElementById('username');
 const avatarField = document.getElementById('avatar');
 const hitField = document.getElementById('hits');
