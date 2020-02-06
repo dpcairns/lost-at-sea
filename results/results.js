@@ -1,14 +1,23 @@
 import { getUser, saveHighScore, getHighScores } from '../app.js';
-
+const hits = localStorage.getItem('hit-count');
+const clicks = localStorage.getItem('total-clicks');
 const nameField = document.getElementById('username');
 const avatarField = document.getElementById('avatar');
 const hitField = document.getElementById('hits');
 const clickField = document.getElementById('clicks');
 const accuracyField = document.getElementById('accuracy');
 const highScoresField = document.getElementById('high-scores');
-
+console.log(JSON.parse(hits));
+console.log(JSON.parse(clicks));
 // this is where the getUser function is for displaying results
 const user = getUser();
+const parsedHits = Number(JSON.parse(hits));
+const parsedClicks = Number(JSON.parse(clicks));
+
+const accuracy = ((parsedHits / parsedClicks) * 100).toFixed(2) + '%';
+accuracyField.textContent = accuracy;
+clickField.textContent = parsedClicks;
+console.log(accuracy);
 
 // We save the high score for the current user here
 saveHighScore(user);
@@ -22,9 +31,9 @@ clickField.innerText = user.clicks;
 
 // This calculates the accuracy if we want to use it!! :))
 
-if (user.clicks > 0) {
-    accuracyField.innerText = (user.hits / user.clicks * 100) + '%';
-}
+// if (user.clicks > 0) {
+//     accuracyField.innerText = (user.hits / user.clicks * 100) + '%';
+// }
 
 // Display high scores
 // Current problem is the high scores aren't being sorted by accuracy
