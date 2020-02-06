@@ -1,4 +1,4 @@
-/* /* #avatars {
+#avatars {
     height: 110px;
 }
 
@@ -23,7 +23,7 @@
 #high-scores .accuracy {
     display: inline-block;
     width: 150px;
-} */
+}
 
 body{
     margin: 0;
