@@ -39,13 +39,18 @@ highScores.sort((a, b) => {
     return 0;
 });
 
+// change maxHighScores to the number of scores you want to have displayed on the results
+// page
+const maxHighScores = 6;
+let currentHighScores = 0;
 highScores.forEach(item => {
     if (!item || item.clicks === 0) return;
     // Uncomment this line to only show the first maxHighScores (5) - change this number if you want
     // to display that number of high scores -- I only have it uncommented because since it isn't sorting 
     // properly it isn't showing the top scores by rank, so ugh :P Halp.
-    // if (currentHighScores > maxHighScores) return;
-
+    if (currentHighScores >= maxHighScores) return;
+    currentHighScores++;
+    
     const li = document.createElement('li');
     const nameScore = document.createElement('span');
     nameScore.className = 'name';
