@@ -2,22 +2,25 @@ body{
     margin: 0;
 }
 body::after {
-    background: url(../assets/sunset4.jpeg);
+    background: url(../assets/sailing-ship-675214_1280.jpg);
     content: "";
     opacity: 0.9;
     position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
     top: 0;
     bottom: 0;
     right: 0;
     left:0 ;
-    z-index: -1;  
+    z-index: -1; 
+
   }
 .container{
     width: 80%;
     margin: 0 auto;
 }
 header{
-    background:#E6EBE0;
+    background:rgb(68, 75, 75);
     padding: 10px 0;
 }
 header::after{
@@ -41,7 +44,7 @@ padding-top: 20px;
 font-size: 20px;
 }
 a{
-    color: #07393C;
+    color: rgb(229, 240, 243);
 }
 h1{
     position: absolute;
@@ -51,10 +54,11 @@ h1{
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Cinzel', serif;
-    font-size: 60px;
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 50px;
     top: 30%;
     font-weight: 900;
+    color:white;
 }
 h2{
     position: absolute;
@@ -64,9 +68,10 @@ h2{
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Cinzel', serif;
+    font-family: 'Fredericka the Great', cursive;
     font-size: 40px;
-    top: 400px;
+    top: 300px;
+    color: white;
 }
 #status{
     position: absolute;
@@ -76,9 +81,10 @@ h2{
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Cinzel', serif;
+    font-family: 'Fredericka the Great', cursive;
     font-size: 30px;
-    top: 450px;
+    top: 400px;
+    color: white;
 }
 #hits{
     position: absolute;
@@ -88,7 +94,8 @@ h2{
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Cinzel', serif;
+    font-family: 'Fredericka the Great', cursive;
     font-size: 30px;
-    top: 500px;
+    top: 450px;
+    color: white;
 }

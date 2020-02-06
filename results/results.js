@@ -1,14 +1,12 @@
 import { getUser, saveHighScore, getHighScores } from '../app.js';
-const hits = localStorage.getItem('hit-count');
-const clicks = localStorage.getItem('total-clicks');
+const hits = localStorage.getItem(JSON.parse('hit-count'));
 const nameField = document.getElementById('username');
 const avatarField = document.getElementById('avatar');
 const hitField = document.getElementById('hits');
 const clickField = document.getElementById('clicks');
 const accuracyField = document.getElementById('accuracy');
 const highScoresField = document.getElementById('high-scores');
-console.log(JSON.parse(hits));
-console.log(JSON.parse(clicks));
+console.log(hits);
 // this is where the getUser function is for displaying results
 const user = getUser();
 const parsedHits = Number(JSON.parse(hits));
@@ -27,6 +25,7 @@ nameField.innerText = user.username;
 avatarField.src = user.avatar;
 hitField.innerText = user.hits;
 clickField.innerText = user.clicks;
+
 
 // This calculates the accuracy if we want to use it!! :))
 
