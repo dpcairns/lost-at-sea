@@ -1,10 +1,12 @@
 import { getUser, saveHighScore, getHighScores } from '../app.js';
+const hits = localStorage.getItem(JSON.parse('hit-count'));
 const nameField = document.getElementById('username');
 const avatarField = document.getElementById('avatar');
 const hitField = document.getElementById('hits');
 const clickField = document.getElementById('clicks');
 const accuracyField = document.getElementById('accuracy');
 const highScoresField = document.getElementById('high-scores');
+console.log(hits);
 // this is where the getUser function is for displaying results
 const user = getUser();
 const parsedHits = Number(JSON.parse(hits));
