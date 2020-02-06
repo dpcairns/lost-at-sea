@@ -17,3 +17,21 @@
 #high-scores {
     list-style-type: none;
 }
+body{
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+body::after{
+    background: url(../lost-at-sea/assets/ocean1.jpeg);
+    content: "";
+    opacity: 0.9;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left:0 ;
+    z-index: -1; 
+}
