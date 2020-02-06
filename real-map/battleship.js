@@ -133,7 +133,7 @@ function compareCoord(array1, array2) {
 }
 
 while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
-    randomLocation2 = Math.floor(Math.random() * 6);   
+    randomLocation2 = Math.floor(Math.random() * 6);
 }
 while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
     randomLocation3 = Math.floor(Math.random() * 6);
@@ -178,14 +178,13 @@ function fireTorpedo(e) {
             totalClicks++;
             addHit();
             addClick();
-            const hiddenButton = document.getElementById('hidden-button');
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
-                alert('All enemy battleships have been defeated! You win!');
                 // const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
                 // const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
-                hiddenButton.classList.remove('hidden');
-
+                // hiddenButton.classList.remove('hidden');
+                alert('All enemy battleships have been defeated! You win!');
+                window.location = '../results/index.html';
                 // console.log(addClick);
                 // console.log('=======');
                 // console.log(addHit);
@@ -194,14 +193,11 @@ function fireTorpedo(e) {
 		// if player clicks a square that's been previously hit, let them know
         } else if (gameBoard[row][col] > 1) {
             alert('Stop wasting your torpedos! You already fired at this location.');
-        }		
+        }
     }
-    e.stopPropagation();
 }
 
-const button = document.getElementById('hidden-button');
-button.addEventListener('click', () => {
-    window.location = '../results/index.html';
-
-    
-});
+// const button = document.getElementById('hidden-button');
+// button.addEventListener('click', () => {
+//     window.location = '../results/index.html';
+// });
