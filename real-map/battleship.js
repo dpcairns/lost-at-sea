@@ -11,21 +11,21 @@ const gameBoardContainer = document.getElementById('gameboard');
 // make the grid columns and rows
 for (i = 0; i < cols; i++) {
     for (j = 0; j < rows; j++) {
-		
-		// create a new div HTML element for each grid square and make it the right size
+
+        // create a new div HTML element for each grid square and make it the right size
         const square = document.createElement('div');
         gameBoardContainer.appendChild(square);
 
-    // give each div element a unique id based on its row and column, like "s00"
-        square.id = 's' + j + i;			
-		
-		// set each grid square's coordinates: multiples of the current row or column number
+        // give each div element a unique id based on its row and column, like "s00"
+        square.id = 's' + j + i;
+
+        // set each grid square's coordinates: multiples of the current row or column number
         const topPosition = j * squareSize;
-        const leftPosition = i * squareSize;			
-		
-		// use CSS absolute positioning to place each grid square on the page
+        const leftPosition = i * squareSize;
+
+        // use CSS absolute positioning to place each grid square on the page
         square.style.top = topPosition + 'px';
-        square.style.left = leftPosition + 'px';						
+        square.style.left = leftPosition + 'px';
     }
 }
 
@@ -57,7 +57,7 @@ const gameBoard = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    
 
 ];
 
@@ -76,7 +76,7 @@ let randomLocation5 = [4, Math.floor(Math.random() * 6)];
 
 for (let k = 0; k < gameBoard.length; k++);
 
-let boatOne = [ 
+let boatOne = [
     gameBoard[randomLocation1[0]][randomLocation1[1]] = 1,
     gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1,
     gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1,
@@ -107,12 +107,11 @@ let boatFive = [
 function compareCoord(array1, array2) {
     if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
         return true;
-    }
-    else false;
+    } else false;
 }
 
 while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
-    randomLocation2 = Math.floor(Math.random() * 6);   
+    randomLocation2 = Math.floor(Math.random() * 6);
 }
 while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
     randomLocation3 = Math.floor(Math.random() * 6);
@@ -129,33 +128,35 @@ gameBoardContainer.addEventListener('click', fireTorpedo, false);
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
-    
+
     if (e.target !== e.currentTarget) {
         // extract row and column # from the HTML element's id
         const row = e.target.id.substring(1, 2);
         const col = e.target.id.substring(2, 3);
         //alert("Clicked on row " + row + ", col " + col);
-				
-		// if player clicks a square with no ship, change the color and change square's value
+
+        // if player clicks a square with no ship, change the color and change square's value
         if (gameBoard[row][col] === 0) {
             e.target.style.background = '#bbb';
-			// set this square's value to 3 to indicate that they fired and missed
+            // set this square's value to 3 to indicate that they fired and missed
             gameBoard[row][col] = 7;
             totalClicks++;
             console.log(totalClicks);
-			
-		// if player clicks a square with a ship, change the color and change square's value
+
+            // if player clicks a square with a ship, change the color and change square's value
         } else if (gameBoard[row][col] === 1 ||
             gameBoard[row][col] === 2 || gameBoard[row][col] === 3 || gameBoard[row][col] === 4 || gameBoard[row][col] === 5) {
             e.target.style.background = 'red';
-			// set this square's value to 2 to indicate the ship has been hit
+            // set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 8;
-			
-			// increment hitCount each time a ship is hit
+
+            // increment hitCount each time a ship is hit
             hitCount++;
             totalClicks++;
             const hiddenButton = document.getElementById('hidden-button');
-			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
+            if (hitCount === 8)
+                alert('Looks like you hit some ships! keep up the good work sailor!');
+            // this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
                 const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
@@ -166,11 +167,11 @@ function fireTorpedo(e) {
                 console.log('=======');
                 console.log(addHit);
             }
-			
-		// if player clicks a square that's been previously hit, let them know
+
+            // if player clicks a square that's been previously hit, let them know
         } else if (gameBoard[row][col] > 1) {
             alert('Stop wasting your torpedos! You already fired at this location.');
-        }		
+        }
     }
     e.stopPropagation();
 }
