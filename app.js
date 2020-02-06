@@ -19,6 +19,7 @@ export function addHit() {
 // this will gather total click count and log to user object, call getUser to get the data
 export function addClick() {
     const user = getUser();
+    const clickCount = localStorage.getItem(JSON.parse(totalClicks));
     user.clicks++;
     saveUser(user);
 }
