@@ -1,4 +1,4 @@
-#avatars {
+/* #avatars {
     height: 110px;
 }
 
@@ -34,4 +34,12 @@ body::after{
     right: 0;
     left:0 ;
     z-index: -1; 
+} */
+
+img{
+    height: 110px;
+    border-style: solid;
+    border-width:1px ;
+    border-radius: 50%;
 }
+
