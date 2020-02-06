@@ -45,18 +45,46 @@ body::after{
     z-index: -1; 
 } 
 
-/* img{
+img{
     height: 110px;
     border-style: solid;
-    border-width:1px ;
-    border-radius: 50%;
+    border-width:1px;
     background-color: white;
-} */
+    display:flex;
+    justify-content: space-evenly;
+    margin: 5px;
+}
+img:hover {
+    padding-top: 0;
+    height: 110px;
+    width: 110px;
+}
+
 .login-box{
     width: 280px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: black;  
+}
+.login-box h1{
+    /* float: left; */
+    font-size:40px;
+    border-bottom: 6px solid;
+    margin-bottom: 50px;
+}
+.textbox{
+    width: 100%;
+    /* overflow: hidden; */
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 20px 0;
+    border-bottom: 1px solid;
+}
+input{
+    width: 150px;
+    height: 40px;
+    font-size: 25px;
+
 }
