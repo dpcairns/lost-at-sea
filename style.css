@@ -1,3 +1,30 @@
+#avatars {
+    height: 110px;
+}
+
+#avatars img {
+    padding-top: 10px;
+    height: 100px;
+    width: 100px;
+}
+
+#avatars img:hover {
+    padding-top: 0;
+    height: 110px;
+    width: 110px;
+}
+
+#high-scores {
+    list-style-type: none;
+}
+
+#high-scores .name,
+#high-scores .clicks,
+#high-scores .accuracy {
+    display: inline-block;
+    width: 150px;
+}
+
 body{
     margin: 0;
     padding: 0;

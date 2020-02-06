@@ -1,5 +1,27 @@
 /// import compareCoord from './compareCoord.js';
+function saveUser(user) {
+    const json = JSON.stringify(user);
+    localStorage.setItem('user', json);
+}
 
+function addHit() {
+    const user = getUser();
+    user.hits++;
+    saveUser(user);
+}
+
+function addClick() {
+    const user = getUser();
+    user.clicks++;
+    saveUser(user);
+}
+
+function getUser() {
+    const json = localStorage.getItem('user');
+    if (!json) return null;
+    const user = JSON.parse(json);
+    return user;
+}
 // set grid rows and columns and the size of each square
 const rows = 10;
 const cols = 10;
@@ -141,6 +163,7 @@ function fireTorpedo(e) {
 			// set this square's value to 3 to indicate that they fired and missed
             gameBoard[row][col] = 7;
             totalClicks++;
+            addClick();
             console.log(totalClicks);
 			
 		// if player clicks a square with a ship, change the color and change square's value
@@ -153,17 +176,19 @@ function fireTorpedo(e) {
 			// increment hitCount each time a ship is hit
             hitCount++;
             totalClicks++;
+            addHit();
+            addClick();
             const hiddenButton = document.getElementById('hidden-button');
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
-                const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
-                const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
+                // const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
+                // const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
                 hiddenButton.classList.remove('hidden');
 
-                console.log(addClick);
-                console.log('=======');
-                console.log(addHit);
+                // console.log(addClick);
+                // console.log('=======');
+                // console.log(addHit);
             }
 			
 		// if player clicks a square that's been previously hit, let them know
