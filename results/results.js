@@ -30,9 +30,14 @@ clickField.innerText = user.clicks;
 
 // This calculates the accuracy if we want to use it!! :))
 
-// if (user.clicks > 0) {
-//     accuracyField.innerText = (user.hits / user.clicks * 100) + '%';
-// }
+if (user.clicks > 0) {
+    accuracyField.innerText = (user.hits / user.clicks * 100) + '%';
+}
+
+//Use this to test high scores
+localStorage.removeItem('high-scores');
+saveHighScore({ username: '1', hits: 10, clicks: 20 });
+saveHighScore({ username: '2', hits: 12, clicks: 15 });
 
 // Display high scores
 // Current problem is the high scores aren't being sorted by accuracy
