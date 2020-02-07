@@ -2,7 +2,7 @@ body {
     margin: 60px auto;
     width: 70%;
 	max-width: 950px;
-	background-image: url(/assets/nautical-map.png);
+	background-image: url('../assets/nautical-map.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -49,7 +49,7 @@ p, button, input {
 	margin:0 auto 2em auto;
 	width:500px;
 	height:500px;
-	background-image: url('/assets/sunkenship.jpeg');
+	background-image: url('../assets/sunkenship.jpeg');
 }
 
 #computer-gameboard div {
@@ -61,7 +61,7 @@ p, button, input {
 	border: 1px solid #ddd;
 	width:50px;
 	height:50px;
-	background-image: url('/assets/sunkenship.jpeg');
+	background-image: url('../assets/sunkenship.jpeg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
