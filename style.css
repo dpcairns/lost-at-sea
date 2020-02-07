@@ -25,13 +25,14 @@
     width: 150px;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
     align-items: center;
     justify-content: center;
 }
-body::after{
+
+body::after {
     background: url(./assets/que\ se\ yo.jpeg);
     content: "";
     opacity: 0.8;
@@ -41,14 +42,14 @@ body::after{
     top: 0;
     bottom: 0;
     right: 0;
-    left:0 ;
-    z-index: -1; 
-} 
+    left: 0;
+    z-index: -1;
+}
 
-.avatar{
+.avatar {
     height: 110px;
     border-style: hidden;
-    border-width:1px;
+    border-width: 1px;
     border-radius: 50%;
     /* background-color: white; */
     display: flex;
@@ -57,34 +58,38 @@ body::after{
     opacity: 1;
     transition: .5s ease;
     backface-visibility: hidden;
- }
- 
-
-.avatar:hover{
-  
-    opacity: 0.6;
-     
 }
-#avatars{
+
+
+.avatar:hover {
+
+    opacity: 0.6;
+
+}
+
+#avatars {
     display: flex;
     justify-content: space-around;
 }
 
-.login-box{
+.login-box {
     width: 280px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: black;  
+    color: black;
 }
-.login-box h1{
-    font-size:40px;
+
+.login-box h1 {
+    font-size: 40px;
     border-bottom: 6px solid;
     margin-bottom: 50px;
     color: black;
+    align-items: center;
 }
-.textbox{
+
+.textbox {
     width: 100%;
     overflow: visible;
     font-size: 20px;
@@ -93,7 +98,7 @@ body::after{
     border-bottom: 1px solid;
 }
 
-.textbox input{
+.textbox input {
     border: none;
     outline: none;
     background: none;
@@ -102,10 +107,12 @@ body::after{
     font-size: 25px;
     color: black;
 }
-input::placeholder{
+
+input::placeholder {
     color: black;
 }
-#chest{
+
+#chest {
     border: 1px;
     background-color: rgb(93, 161, 170);
 }

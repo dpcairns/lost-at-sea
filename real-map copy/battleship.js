@@ -113,12 +113,13 @@ const computerBoard = [
 ];
 
 
-
+                                                                // USER Random Start Locations
 let randomLocation1 = [1, Math.floor(Math.random() * 6)];
 let randomLocation2 = [2, Math.floor(Math.random() * 7)];
 let randomLocation3 = [6, Math.floor(Math.random() * 7)];
 let randomLocation4 = [9, Math.floor(Math.random() * 8)];
 let randomLocation5 = [4, Math.floor(Math.random() * 6)];
+                                                                // Computer Random Start Locations
 let computerRandomLocation1 = [3, Math.floor(Math.random() * 6)];
 let computerRandomLocation2 = [5, Math.floor(Math.random() * 7)];
 let computerRandomLocation3 = [2, Math.floor(Math.random() * 7)];

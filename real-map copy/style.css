@@ -13,23 +13,61 @@ h1 {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
 }
 
-p, button, input {
+button, input {
     font-size: 1.5em;
     line-height: 1.4em;
     color: #333;
 	margin-bottom:1em;
 }
+#story {
+	text-align: center;
+	text-shadow: black 2px 1px 1px;
+	font-size: 35px;
+	color: yellow;
+}
+#left {
+	text-shadow: black 2px 1px 1px;
+	font-size: 25px;
+	color: yellow;
+	text-align: center;
+	margin-right: 48%;	
+}
+ 
+#right {
+	text-shadow: black 2px 1px 1px;
+	font-size: 25px;
+	color: yellow; 
+	
+	text-align: center;
+	margin-left: 75%;
+	
+		
+}
 
 section {
 	display: flex;
-	justify-content: space-evenly;
+	opacity: 75%;
+	/* justify-content: space-evenly; */
 }
 #gameboard {
+	float: left;
+	right: 1%;
 	position:relative;
 	margin:0 auto 2em auto;
 	width:500px;
 	height:500px;
-	background-image: url('../assets/sunkenship.jpeg');
+
+}
+
+#computer-gameboard {
+	
+	float: right;
+	left: 4%;
+	position:relative;
+	margin:0 auto 2em auto;
+	width:500px;
+	height:500px;
+	
 }
 
 #gameboard div {
@@ -45,16 +83,6 @@ section {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
-.hidden {
-	display: none;
-}
-#computer-gameboard {
-	position:relative;
-	margin:0 auto 2em auto;
-	width:500px;
-	height:500px;
-	background-image: url('/assets/sunkenship.jpeg');
-}
 
 #computer-gameboard div {
 	position:absolute;
@@ -68,4 +96,8 @@ section {
 	background-image: url('/assets/sunkenship.jpeg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+}
+
+.hidden {
+display: none;
 }
