@@ -1,27 +1,5 @@
 /// import compareCoord from './compareCoord.js';
-function saveUser(user) {
-    const json = JSON.stringify(user);
-    localStorage.setItem('user', json);
-}
 
-function addHit() {
-    const user = getUser();
-    user.hits++;
-    saveUser(user);
-}
-
-function addClick() {
-    const user = getUser();
-    user.clicks++;
-    saveUser(user);
-}
-
-function getUser() {
-    const json = localStorage.getItem('user');
-    if (!json) return null;
-    const user = JSON.parse(json);
-    return user;
-}
 // set grid rows and columns and the size of each square
 const rows = 10;
 const cols = 10;
@@ -33,22 +11,25 @@ const computerGameBoardContainer = document.getElementById('computer-gameboard')
 
 // make the grid columns and rows
 for (i = 0; i < cols; i++) {
-    for (j = 0; j < rows; j++) {
-		
-		// create a new div HTML element for each grid square and make it the right size
+    for (j = 0; j < rows; j++){
+
+        
+        
+        // create a new div HTML element for each grid square and make it the right size
+        
         const square = document.createElement('div');
         gameBoardContainer.appendChild(square);
-
-    // give each div element a unique id based on its row and column, like "s00"
-        square.id = 's' + j + i;			
+        
+        // give each div element a unique id based on its row and column, like "s00"
+        square.id = 's' + j + i;	
 		
 		// set each grid square's coordinates: multiples of the current row or column number
         const topPosition = j * squareSize;
-        const leftPosition = i * squareSize;			
+        const leftPosition = i * squareSize;	
 		
 		// use CSS absolute positioning to place each grid square on the page
         square.style.top = topPosition + 'px';
-        square.style.left = leftPosition + 'px';						
+        square.style.left = leftPosition + 'px';		
     }
 }
 for (k = 0; k < cols; k++) {
@@ -127,8 +108,6 @@ let computerRandomLocation5 = [1, Math.floor(Math.random() * 6)];
 
 
 
-
-
 for (let k = 0; k < gameBoard.length; k++);
 
 let boatOne = [ 
@@ -173,24 +152,25 @@ let boatFive = [
     computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 1] = 5,
     computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 2] = 5,
     computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 3] = 5
+
 ];
 
-function compareCoord(array1, array2) {
-    if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
-        return true;
-    }
-    else false;
-}
+// function compareCoord(array1, array2) {
+//     if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
+//         return true;
+//     }
+//     else false;
+// }
 
-while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
-    randomLocation2 = Math.floor(Math.random() * 6);
-}
-while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
-    randomLocation3 = Math.floor(Math.random() * 6);
-}
-while (!compareCoord(randomLocation1, randomLocation4)) {
-    randomLocation4 = Math.floor(Math.random() * 6);
-}
+// while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
+//     randomLocation2 = Math.floor(Math.random() * 6);   
+// }
+// while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
+//     randomLocation3 = Math.floor(Math.random() * 6);
+// }
+// while (!compareCoord(randomLocation1, randomLocation4)) {
+//     randomLocation4 = Math.floor(Math.random() * 6);
+// }
 
 
 console.log(JSON.stringify(gameBoard));
@@ -201,6 +181,7 @@ gameBoardContainer.addEventListener('click', (e) => {
     computerTorpedo();
 
 });
+
 
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
@@ -218,7 +199,6 @@ function fireTorpedo(e) {
 			// set this square's value to 3 to indicate that they fired and missed
             gameBoard[row][col] = 7;
             totalClicks++;
-            addClick();
             console.log(totalClicks);
 			
 		// if player clicks a square with a ship, change the color and change square's value
@@ -231,26 +211,34 @@ function fireTorpedo(e) {
 			// increment hitCount each time a ship is hit
             hitCount++;
             totalClicks++;
-            addHit();
-            addClick();
+            const hiddenButton = document.getElementById('hidden-button');
 			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
             if (hitCount === 16) {
-                // const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
-                // const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
-                // hiddenButton.classList.remove('hidden');
                 alert('All enemy battleships have been defeated! You win!');
-                window.location = '../results/index.html';
-                // console.log(addClick);
-                // console.log('=======');
-                // console.log(addHit);
-            }
+                const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
+                const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
+                hiddenButton.classList.remove('hidden');
+
+                console.log(addClick);
+                console.log('=======');
+                console.log(addHit);
+            // } else if (gameBoard[row][col] > 7) {
+            //     alert('Stop wasting your torpedos! You already fired at this location.');
+            }		
+        }	
+    }
 			
 		// if player clicks a square that's been previously hit, let them know
-        } else if (gameBoard[row][col] > 1) {
-            alert('Stop wasting your torpedos! You already fired at this location.');
-        }
-    }
+
+    e.stopPropagation();
 }
+
+const button = document.getElementById('hidden-button');
+button.addEventListener('click', () => {
+    window.location = '../results/index.html';
+
+    
+});
 
 function computerTorpedo() {
     
@@ -265,8 +253,3 @@ function computerTorpedo() {
         computerTarg.style.background = 'red';
     }
 }
-
-// const button = document.getElementById('hidden-button');
-// button.addEventListener('click', () => {
-//     window.location = '../results/index.html';
-// });
