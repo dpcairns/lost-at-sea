@@ -19,31 +19,23 @@ p, button, input {
     color: #333;
 	margin-bottom:1em;
 }
+
 section {
 	display: flex;
 	justify-content: space-evenly;
 }
-
 #gameboard {
-	float: left;
+	position:relative;
 	margin:0 auto 2em auto;
 	width:500px;
 	height:500px;
 	background-image: url('../assets/sunkenship.jpeg');
 }
 
-#computer-gameboard {
-	float: right;
-	margin:0 auto 2em auto;
-	width:500px;
-	height:500px;
-	background-image: url('/assets/sunkenship.jpeg');
-}
-
 #gameboard div {
-	/* position:absolute; */
+	position:absolute;
 	-webkit-box-sizing: border-box; 
-	-moz-box-sizing: border-box;    
+	-moz-box-sizing: border-box;   
 	box-sizing: border-box;         
 	background: #f6f8f9; 
 	border: 1px solid #ddd;
@@ -52,7 +44,16 @@ section {
 	background-image: url('../assets/sunkenship.jpeg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-
+}
+.hidden {
+	display: none;
+}
+#computer-gameboard {
+	position:relative;
+	margin:0 auto 2em auto;
+	width:500px;
+	height:500px;
+	background-image: url('/assets/sunkenship.jpeg');
 }
 
 #computer-gameboard div {
@@ -67,7 +68,4 @@ section {
 	background-image: url('/assets/sunkenship.jpeg');
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-}
-.hidden {
-	display: none;
 }
