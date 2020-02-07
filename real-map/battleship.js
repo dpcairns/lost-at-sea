@@ -29,6 +29,7 @@ const squareSize = 50;
 
 // get the container element
 const gameBoardContainer = document.getElementById('gameboard');
+const computerGameBoardContainer = document.getElementById('computer-gameboard');
 
 // make the grid columns and rows
 for (i = 0; i < cols; i++) {
@@ -48,6 +49,20 @@ for (i = 0; i < cols; i++) {
 		// use CSS absolute positioning to place each grid square on the page
         square.style.top = topPosition + 'px';
         square.style.left = leftPosition + 'px';						
+    }
+}
+for (k = 0; k < cols; k++) {
+    for (l = 0; l < rows; l++) {
+        const square2 = document.createElement('div');
+        computerGameBoardContainer.appendChild(square2);
+        
+        square2.id = 'p' + l + k;	
+        
+        const computerTopPosition = l * squareSize;
+        const computerLeftPosition = k * squareSize;		
+        
+        square2.style.top = computerTopPosition + 'px';
+        square2.style.left = computerLeftPosition + 'px';
     }
 }
 
@@ -82,6 +97,21 @@ const gameBoard = [
 
 ];
 
+const computerBoard = [
+
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+];
+
 
 
 let randomLocation1 = [1, Math.floor(Math.random() * 6)];
@@ -89,10 +119,14 @@ let randomLocation2 = [2, Math.floor(Math.random() * 7)];
 let randomLocation3 = [6, Math.floor(Math.random() * 7)];
 let randomLocation4 = [9, Math.floor(Math.random() * 8)];
 let randomLocation5 = [4, Math.floor(Math.random() * 6)];
+let computerRandomLocation1 = [3, Math.floor(Math.random() * 6)];
+let computerRandomLocation2 = [5, Math.floor(Math.random() * 7)];
+let computerRandomLocation3 = [2, Math.floor(Math.random() * 7)];
+let computerRandomLocation4 = [9, Math.floor(Math.random() * 8)];
+let computerRandomLocation5 = [1, Math.floor(Math.random() * 6)];
 
 
 
-// if (randomLocation3, randomLocation4 === randomLocation5, randomLocation6 || randomLocation3, randomLocation4 === randomLocation6, randomLocation7 || randomLocation3, randomLocation4 === randomLocation9, randomLocation10 || randomLocation3, randomLocation4 === randomLocationX, randomLocationY)Math.floor(Math.random() * 3);
 
 
 for (let k = 0; k < gameBoard.length; k++);
@@ -101,28 +135,44 @@ let boatOne = [
     gameBoard[randomLocation1[0]][randomLocation1[1]] = 1,
     gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1,
     gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1,
+    computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1]] = 1,
+    computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 1] = 1,
+    computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 2] = 1,
 
 ];
 let boatTwo = [
     gameBoard[randomLocation2[0]][randomLocation2[1]] = 2,
     gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2,
     gameBoard[randomLocation2[0]][randomLocation2[1] + 2] = 2,
-    gameBoard[randomLocation2[0]][randomLocation2[1] + 3] = 2
+    gameBoard[randomLocation2[0]][randomLocation2[1] + 3] = 2,
+    computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1]] = 2,
+    computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 1] = 2,
+    computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 2] = 2,
+    computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 3] = 2
 ];
 let boatThree = [
     gameBoard[randomLocation3[0]][randomLocation3[1]] = 3,
     gameBoard[randomLocation3[0]][randomLocation3[1] + 1] = 3,
-    gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3
+    gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3,
+    computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1]] = 3,
+    computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1] + 1] = 3,
+    computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1] + 2] = 3
 ];
 let boatFour = [
     gameBoard[randomLocation4[0]][randomLocation4[1]] = 4,
-    gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4
+    gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4,
+    computerBoard[computerRandomLocation4[0]][computerRandomLocation4[1]] = 4,
+    computerBoard[computerRandomLocation4[0]][computerRandomLocation4[1] + 1] = 4
 ];
 let boatFive = [
     gameBoard[randomLocation5[0]][randomLocation5[1]] = 5,
     gameBoard[randomLocation5[0]][randomLocation5[1] + 1] = 5,
     gameBoard[randomLocation5[0]][randomLocation5[1] + 2] = 5,
-    gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5
+    gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5,
+    computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1]] = 5,
+    computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 1] = 5,
+    computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 2] = 5,
+    computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 3] = 5
 ];
 
 function compareCoord(array1, array2) {
@@ -144,8 +194,13 @@ while (!compareCoord(randomLocation1, randomLocation4)) {
 
 
 console.log(JSON.stringify(gameBoard));
+console.log(JSON.stringify(computerBoard));
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
-gameBoardContainer.addEventListener('click', fireTorpedo, false);
+gameBoardContainer.addEventListener('click', (e) => {
+    fireTorpedo(e);
+    computerTorpedo();
+
+});
 
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
@@ -194,6 +249,20 @@ function fireTorpedo(e) {
         } else if (gameBoard[row][col] > 1) {
             alert('Stop wasting your torpedos! You already fired at this location.');
         }
+    }
+}
+
+function computerTorpedo() {
+    
+    const randomLoc = [Math.floor(Math.random() * 9), Math.floor(Math.random() * 9)];
+    const placement = computerBoard[randomLoc[0]][randomLoc[1]];
+    const computerTarg = document.getElementById('p' + randomLoc[0] + randomLoc[1]);
+  
+    if (placement === 0) {
+        computerTarg.style.background = '#bbb';
+    } else if (placement === 1 ||
+        placement === 2 || placement === 3 || placement === 4 || placement === 5) {
+        computerTarg.style.background = 'red';
     }
 }
 
