@@ -1,4 +1,3 @@
-/// import compareCoord from './compareCoord.js';
 function saveUser(user) {
     const json = JSON.stringify(user);
     localStorage.setItem('user', json);
@@ -22,6 +21,7 @@ function getUser() {
     const user = JSON.parse(json);
     return user;
 }
+
 // set grid rows and columns and the size of each square
 const rows = 10;
 const cols = 10;
@@ -66,15 +66,6 @@ for (k = 0; k < cols; k++) {
     }
 }
 
-/* lazy way of tracking when the game is won: just increment hitCount on every hit
-   in this version, and according to the official Hasbro rules (http://www.hasbro.com/common/instruct/BattleShip_(2002).PDF)
-   there are 17 hits to be made in order to win the game:
-      Carrier     - 5 hits
-      Battleship  - 4 hits
-      Destroyer   - 3 hits
-      Submarine   - 3 hits
-      Patrol Boat - 2 hits
-*/
 let hitCount = 0;
 let totalClicks = 0;
 
@@ -112,13 +103,14 @@ const computerBoard = [
 
 ];
 
-
+                                                                // USER Random Start Locations
 
 let randomLocation1 = [1, Math.floor(Math.random() * 6)];
 let randomLocation2 = [2, Math.floor(Math.random() * 7)];
 let randomLocation3 = [6, Math.floor(Math.random() * 7)];
 let randomLocation4 = [9, Math.floor(Math.random() * 8)];
 let randomLocation5 = [4, Math.floor(Math.random() * 6)];
+                                                                // Computer Random Start Locations
 let computerRandomLocation1 = [3, Math.floor(Math.random() * 6)];
 let computerRandomLocation2 = [5, Math.floor(Math.random() * 7)];
 let computerRandomLocation3 = [2, Math.floor(Math.random() * 7)];
@@ -126,15 +118,12 @@ let computerRandomLocation4 = [9, Math.floor(Math.random() * 8)];
 let computerRandomLocation5 = [1, Math.floor(Math.random() * 6)];
 
 
-
-
-
-for (let k = 0; k < gameBoard.length; k++);
-
+                                                                // How we set Boat Lenghts
 let boatOne = [ 
     gameBoard[randomLocation1[0]][randomLocation1[1]] = 1,
     gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1,
     gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1,
+
     computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1]] = 1,
     computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 1] = 1,
     computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 2] = 1,
@@ -145,6 +134,7 @@ let boatTwo = [
     gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2,
     gameBoard[randomLocation2[0]][randomLocation2[1] + 2] = 2,
     gameBoard[randomLocation2[0]][randomLocation2[1] + 3] = 2,
+
     computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1]] = 2,
     computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 1] = 2,
     computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 2] = 2,
@@ -154,6 +144,7 @@ let boatThree = [
     gameBoard[randomLocation3[0]][randomLocation3[1]] = 3,
     gameBoard[randomLocation3[0]][randomLocation3[1] + 1] = 3,
     gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3,
+
     computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1]] = 3,
     computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1] + 1] = 3,
     computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1] + 2] = 3
@@ -161,6 +152,7 @@ let boatThree = [
 let boatFour = [
     gameBoard[randomLocation4[0]][randomLocation4[1]] = 4,
     gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4,
+
     computerBoard[computerRandomLocation4[0]][computerRandomLocation4[1]] = 4,
     computerBoard[computerRandomLocation4[0]][computerRandomLocation4[1] + 1] = 4
 ];
@@ -169,12 +161,14 @@ let boatFive = [
     gameBoard[randomLocation5[0]][randomLocation5[1] + 1] = 5,
     gameBoard[randomLocation5[0]][randomLocation5[1] + 2] = 5,
     gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5,
+
     computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1]] = 5,
     computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 1] = 5,
     computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 2] = 5,
     computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 3] = 5
 ];
 
+                                                                // OVERLAP CONTROL 
 function compareCoord(array1, array2) {
     if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
         return true;
@@ -195,6 +189,8 @@ while (!compareCoord(randomLocation1, randomLocation4)) {
 
 console.log(JSON.stringify(gameBoard));
 console.log(JSON.stringify(computerBoard));
+
+                                                                // FUNCTIONALITY OF THE BOARD
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener('click', (e) => {
     fireTorpedo(e);
@@ -202,7 +198,6 @@ gameBoardContainer.addEventListener('click', (e) => {
 
 });
 
-// initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
     
@@ -233,16 +228,10 @@ function fireTorpedo(e) {
             totalClicks++;
             addHit();
             addClick();
-			// this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
+                                                                // How we win the game
             if (hitCount === 16) {
-                // const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
-                // const addHit = localStorage.setItem('hit-count', JSON.stringify(hitCount));
-                // hiddenButton.classList.remove('hidden');
                 alert('All enemy battleships have been defeated! You win!');
                 window.location = '../results/index.html';
-                // console.log(addClick);
-                // console.log('=======');
-                // console.log(addHit);
             }
 			
 		// if player clicks a square that's been previously hit, let them know
@@ -265,8 +254,3 @@ function computerTorpedo() {
         computerTarg.style.background = 'red';
     }
 }
-
-// const button = document.getElementById('hidden-button');
-// button.addEventListener('click', () => {
-//     window.location = '../results/index.html';
-// });

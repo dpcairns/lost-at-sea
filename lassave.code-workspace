@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "C:\\Users\\jimmy\\Desktop\\real-mapcopyJamesEdits copy"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5502,
+		"git.ignoreLimitWarning": true,
+		"liveServer.settings.multiRootWorkspaceName": "lost-at-sea"
+	}
+}
