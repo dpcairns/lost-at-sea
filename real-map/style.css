@@ -2,7 +2,7 @@ body {
     margin: 60px auto;
     width: 70%;
 	max-width: 950px;
-	background-image: url(../assets/nautical-map.png);
+	background-image: url('../assets/nautical-map.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 }
