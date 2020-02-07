@@ -1,20 +1,13 @@
 body{
     margin: 0;
-}
-body::after {
-    background: url(../assets/sailing-ship-675214_1280.jpg);
-    content: "";
-    opacity: 0.9;
-    position: absolute;
-    background-repeat: no-repeat;
+    font-family: 'Fredericka the Great', cursive;
+    background-image: url(../assets/sailing-ship-675214_1280.jpg);
     background-size: cover;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left:0 ;
-    z-index: -1; 
+    background-attachment: fixed;
+    color: #ffffff;
+    padding-bottom: 100px;
+}
 
-  }
 .container{
     width: 80%;
     margin: 0 auto;
@@ -47,55 +40,82 @@ a{
     color: rgb(229, 240, 243);
 }
 h1{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Fredericka the Great', cursive;
     font-size: 50px;
     top: 30%;
     font-weight: 900;
     color:white;
+    margin: 0;
 }
 h2{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Fredericka the Great', cursive;
     font-size: 40px;
-    top: 300px;
     color: white;
+    margin: 0;
 }
+
 #status{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Fredericka the Great', cursive;
     font-size: 30px;
-    top: 400px;
     color: white;
+    margin: 0;
 }
+
 #hits{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     padding: 25px;
     text-align: center; 
-    font-family: 'Fredericka the Great', cursive;
     font-size: 30px;
-    top: 450px;
     color: white;
+    margin: 0;
+}
+
+.profile,
+#high-scores {
+    margin: auto;
+    width: 600px;
+}
+
+.profile * {
+    margin: auto;
+    text-align: center;
+}
+
+.profile img {
+    display: block;
+    width: 100px;
+    margin: auto;
+}
+
+#avatars {
+    height: 110px;
+}
+
+#avatars img {
+    padding-top: 10px;
+    height: 100px;
+    width: 100px;
+}
+
+#avatars img:hover {
+    padding-top: 0;
+    height: 110px;
+    width: 110px;
+}
+
+#high-scores {
+    list-style-type: none;
+}
+
+#high-scores .name,
+#high-scores .clicks,
+#high-scores .accuracy {
+    display: inline-block;
+    width: 150px;
 }

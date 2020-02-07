@@ -4,41 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Result</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Results</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rye&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rye|UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Rye|UnifrakturMaguntia&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <center>
-    <main>
-        <img src="../assets/sunkenship.jpeg" width="500" height="350" alt="result-image">
-        <br>
-        <br>
-        <div class="profile">
-            <img id="avatar" height="50px" width="50px">
-            <br>
-            <br>
-            <span id="username"></span>
-            <br>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li> <a href="../">Start Over</a></li>
+                    <li><a href="../about-us/about-us.html">About Us</a></li>
+                </ul>
+            </nav>
         </div>
-        <p>
-            Your adventure has ended.
-        </p>
-        <p>
-            You won in <span id="clicks"></span> clicks.
-        </p>
-        <p>Accuracy: <span id="accuracy"></span></p>
-        <div>
-            High Scores:
+    </header>
+    <svg>
+        <filter id="turbulence" x=0 y=0 width="100%" height="100%">
+            <feTurbulence id="sea-filter" numOctaves="3" seed="2" baseFrequency="0.02 0.05"></feTurbulence>
+            <feDisplacementMap scale="20" in="SourceGraphic"></feDisplacementMap>
+            <animate xlink:href="#sea-filter" attributeName="baseFrequency" dur="60s" keyTimes="0",0.5;1 values="0.02 0.06;0.04 0.08;0.02 0.06" repeatCpunt="indefinite"></animate>
+        </filter>
+    </svg>
+
+    <section>
+        <h1>Your adventure has ended</h1>
+        <div class="profile">
+            <img id="avatar">
+            <div id="username"></div>
+        </div>
+        <h2>Results</h2>
+        <div >
+            <p id="status">
+                Clicks:
+                <span id="clicks"></span>
+            </p>
+            <p id="hits">
+                Accuracy:
+                <span id="accuracy"></span>
+            </p>
+        </div>
+        <div class="profile">
+            <h3>High Scores:</h3>
             <ul id="high-scores"></ul>
         </div>
-        <p id="story-display"></p>
-        <img id="result-image">
-        <p>
-            <a href="../">Begin again</a>
-        </p>
-    </main>
-    </center>
+    </section>
     <script type="module" src="../results/results.js"></script>
-    <script type="module" src="../app.js"></script>
 </body>
 </html>
