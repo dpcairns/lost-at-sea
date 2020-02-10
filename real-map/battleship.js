@@ -1,26 +1,4 @@
-function saveUser(user) {
-    const json = JSON.stringify(user);
-    localStorage.setItem('user', json);
-}
-
-function addHit() {
-    const user = getUser();
-    user.hits++;
-    saveUser(user);
-}
-
-function addClick() {
-    const user = getUser();
-    user.clicks++;
-    saveUser(user);
-}
-
-function getUser() {
-    const json = localStorage.getItem('user');
-    if (!json) return null;
-    const user = JSON.parse(json);
-    return user;
-}
+import { addClick, addHit } from '../app.js';
 
 // set grid rows and columns and the size of each square
 const rows = 10;
@@ -168,25 +146,7 @@ computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 2] = 5;
 computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 3] = 5;
 
 
-                                                                // OVERLAP CONTROL 
-function compareCoord(array1, array2) {
-    if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
-        return true;
-    }
-    else false;
-}
-
-while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
-    randomLocation2 = Math.floor(Math.random() * 6);
-}
-while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
-    randomLocation3 = Math.floor(Math.random() * 6);
-}
-while (!compareCoord(randomLocation1, randomLocation4)) {
-    randomLocation4 = Math.floor(Math.random() * 6);
-}
-
-
+// displays gameboard in console for debugging
 console.log(JSON.stringify(gameBoard));
 console.log(JSON.stringify(computerBoard));
 
