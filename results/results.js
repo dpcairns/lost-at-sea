@@ -51,21 +51,40 @@ highScores.forEach(item => {
     if (currentHighScores >= maxHighScores) return;
     currentHighScores++;
     
+
+
     const li = document.createElement('li');
-    const nameScore = document.createElement('span');
-    nameScore.className = 'name';
-    nameScore.innerText = item.username;
-    li.appendChild(nameScore);
+    const nameScore = renderNameScore(item);
+    const clickScore = renderClickScore(item);
+    const accuracyScore = renderAccuracyScore(item);
     
-    const clickScore = document.createElement('span');
-    clickScore.className = 'clicks';
-    clickScore.innerText = item.clicks;
-    li.appendChild(clickScore);
+    li.append(nameScore, clickScore, accuracyScore);
+    highScoresField.appendChild(li);
     
+    
+    
+    // li.appendChild(clickScore);
+    // li.appendChild(accuracyScore);
+    
+});
+
+function renderAccuracyScore(item) {
     const accuracyScore = document.createElement('span');
     accuracyScore.className = 'accuracy';
     accuracyScore.innerText = `${(item.hits / item.clicks * 100).toFixed(2)}%`;
-    li.appendChild(accuracyScore);
-    
-    highScoresField.appendChild(li);
-});
+    return accuracyScore;
+}
+
+function renderClickScore(item) {
+    const clickScore = document.createElement('span');
+    clickScore.className = 'clicks';
+    clickScore.innerText = item.clicks;
+    return clickScore;
+}
+
+function renderNameScore(item) {
+    const nameScore = document.createElement('span');
+    nameScore.className = 'name';
+    nameScore.innerText = item.username;
+    return nameScore;
+}
