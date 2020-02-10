@@ -32,8 +32,8 @@ const gameBoardContainer = document.getElementById('gameboard');
 const computerGameBoardContainer = document.getElementById('computer-gameboard');
 
 // make the grid columns and rows
-for (i = 0; i < cols; i++) {
-    for (j = 0; j < rows; j++) {
+for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
 		
 		// create a new div HTML element for each grid square and make it the right size
         const square = document.createElement('div');
@@ -51,8 +51,8 @@ for (i = 0; i < cols; i++) {
         square.style.left = leftPosition + 'px';						
     }
 }
-for (k = 0; k < cols; k++) {
-    for (l = 0; l < rows; l++) {
+for (let k = 0; k < cols; k++) {
+    for (let l = 0; l < rows; l++) {
         const square2 = document.createElement('div');
         computerGameBoardContainer.appendChild(square2);
         
@@ -119,54 +119,54 @@ let computerRandomLocation5 = [1, Math.floor(Math.random() * 6)];
 
 
                                                                 // How we set Boat Lenghts
-let boatOne = [ 
-    gameBoard[randomLocation1[0]][randomLocation1[1]] = 1,
-    gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1,
-    gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1,
 
-    computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1]] = 1,
-    computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 1] = 1,
-    computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 2] = 1,
+// boat one
+gameBoard[randomLocation1[0]][randomLocation1[1]] = 1;
+gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1;
+gameBoard[randomLocation1[0]][randomLocation1[1] + 2] = 1;
 
-];
-let boatTwo = [
-    gameBoard[randomLocation2[0]][randomLocation2[1]] = 2,
-    gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2,
-    gameBoard[randomLocation2[0]][randomLocation2[1] + 2] = 2,
-    gameBoard[randomLocation2[0]][randomLocation2[1] + 3] = 2,
+computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1]] = 1;
+computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 1] = 1;
+computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 2] = 1;
 
-    computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1]] = 2,
-    computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 1] = 2,
-    computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 2] = 2,
-    computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 3] = 2
-];
-let boatThree = [
-    gameBoard[randomLocation3[0]][randomLocation3[1]] = 3,
-    gameBoard[randomLocation3[0]][randomLocation3[1] + 1] = 3,
-    gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3,
+//boat two
+gameBoard[randomLocation2[0]][randomLocation2[1]] = 2;
+gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2;
+gameBoard[randomLocation2[0]][randomLocation2[1] + 2] = 2;
+gameBoard[randomLocation2[0]][randomLocation2[1] + 3] = 2;
 
-    computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1]] = 3,
-    computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1] + 1] = 3,
-    computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1] + 2] = 3
-];
-let boatFour = [
-    gameBoard[randomLocation4[0]][randomLocation4[1]] = 4,
-    gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4,
+computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1]] = 2;
+computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 1] = 2;
+computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 2] = 2;
+computerBoard[computerRandomLocation2[0]][computerRandomLocation2[1] + 3] = 2;
 
-    computerBoard[computerRandomLocation4[0]][computerRandomLocation4[1]] = 4,
-    computerBoard[computerRandomLocation4[0]][computerRandomLocation4[1] + 1] = 4
-];
-let boatFive = [
-    gameBoard[randomLocation5[0]][randomLocation5[1]] = 5,
-    gameBoard[randomLocation5[0]][randomLocation5[1] + 1] = 5,
-    gameBoard[randomLocation5[0]][randomLocation5[1] + 2] = 5,
-    gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5,
+// boat three
+gameBoard[randomLocation3[0]][randomLocation3[1]] = 3;
+gameBoard[randomLocation3[0]][randomLocation3[1] + 1] = 3;
+gameBoard[randomLocation3[0]][randomLocation3[1] + 2] = 3;
 
-    computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1]] = 5,
-    computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 1] = 5,
-    computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 2] = 5,
-    computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 3] = 5
-];
+computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1]] = 3;
+computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1] + 1] = 3;
+computerBoard[computerRandomLocation3[0]][computerRandomLocation3[1] + 2] = 3;
+
+// boat four
+gameBoard[randomLocation4[0]][randomLocation4[1]] = 4;
+gameBoard[randomLocation4[0]][randomLocation4[1] + 1] = 4;
+
+computerBoard[computerRandomLocation4[0]][computerRandomLocation4[1]] = 4;
+computerBoard[computerRandomLocation4[0]][computerRandomLocation4[1] + 1] = 4;
+
+//boat five
+gameBoard[randomLocation5[0]][randomLocation5[1]] = 5;
+gameBoard[randomLocation5[0]][randomLocation5[1] + 1] = 5;
+gameBoard[randomLocation5[0]][randomLocation5[1] + 2] = 5;
+gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5;
+
+computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1]] = 5;
+computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 1] = 5;
+computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 2] = 5;
+computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 3] = 5;
+
 
                                                                 // OVERLAP CONTROL 
 function compareCoord(array1, array2) {
