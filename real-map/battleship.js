@@ -97,7 +97,7 @@ let computerRandomLocation5 = [1, Math.floor(Math.random() * 6)];
 
 
                                                                 // How we set Boat Lenghts
-
+                                                            
 // boat one
 gameBoard[randomLocation1[0]][randomLocation1[1]] = 1;
 gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1;
