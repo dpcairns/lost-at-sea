@@ -51,22 +51,8 @@ let totalClicks = 0;
    and place ships on the board (later, create function for random placement!)
    0 = empty, 1 = part of a ship, 2 = a sunken part of a ship, 3 = a missed shot
 */
-const gameBoard = [
 
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
-
-];
-
-
+const gameBoard = Array(9).fill(Array(10).fill(0));
 
 let randomLocation1 = [1, Math.floor(Math.random() * 6)];
 let randomLocation2 = [2, Math.floor(Math.random() * 7)];
@@ -109,20 +95,23 @@ let randomLocation4 = [9, Math.floor(Math.random() * 8)];
 //     gameBoard[randomLocation5[0]][randomLocation5[1] + 3] = 5
 // ];
 
+// nice util--could be refactored, since the && evaluates to a boolean
 function compareCoord(array1, array2) {
-    if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
-        return true;
-    } else false;
+    return array1[0] !== array2[0] && array1[1] !== array2[1];
 }
 
+function makeRandom(someLocation) {
+    someLocation = Math.floor(Math.random() * 6);
+};
+
 while (!compareCoord(randomLocation1, randomLocation2) && !compareCoord(randomLocation2, randomLocation3) && !compareCoord(randomLocation2, randomLocation4)) {
-    randomLocation2 = Math.floor(Math.random() * 6);
+    makeRandom(randomLocation2);
 }
 while (!compareCoord(randomLocation1, randomLocation3) && !compareCoord(randomLocation3, randomLocation4)) {
-    randomLocation3 = Math.floor(Math.random() * 6);
+    makeRandom(randomLocation3);
 }
 while (!compareCoord(randomLocation1, randomLocation4)) {
-    randomLocation4 = Math.floor(Math.random() * 6);
+    makeRandom(randomLocation3);
 }
 
 
@@ -130,6 +119,7 @@ console.log(JSON.stringify(gameBoard));
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener('click', fireTorpedo, false);
 
+// good on you for the citation!
 // initial code via http://www.kirupa.com/html5/handling_events_for_many_elements.htm:
 function fireTorpedo(e) {
     // if item clicked (e.target) is not the parent element on which the event listener was set (e.currentTarget)
@@ -150,8 +140,7 @@ function fireTorpedo(e) {
             console.log(totalClicks);
 
             // if player clicks a square with a ship, change the color and change square's value
-        } else if (gameBoard[row][col] === 1 ||
-            gameBoard[row][col] === 2 || gameBoard[row][col] === 3 || gameBoard[row][col] === 4 || gameBoard[row][col] === 5) {
+        } else if ([1, 2, 3, 4, 5].includes(gameBoard[row][col])) {
             e.target.style.background = 'red';
             // set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 8;
@@ -165,6 +154,7 @@ function fireTorpedo(e) {
             if (hitCount === 8)
                 alert('Looks like you hit some ships! keep up the good work sailor!');
             // this definitely shouldn't be hard-coded, but here it is anyway. lazy, simple solution:
+            // wouldn't be too hard to change this to some state that decrememnts on hit so that it could be dynamic later
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
                 // const addClick = localStorage.setItem('total-clicks', JSON.stringify(totalClicks));
@@ -182,6 +172,7 @@ function fireTorpedo(e) {
             alert('Stop wasting your torpedos! You already fired at this location.');
         }
     }
+    // woooaaaah
     e.stopPropagation();
 }
 

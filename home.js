@@ -2,6 +2,7 @@ import { saveUser } from './app.js';
 
 const avatars = document.getElementsByClassName('avatar');
 for (let avatar of avatars) {
+    // nice iterative event listenin'!
     avatar.addEventListener('click', () => {
         const nameField = document.getElementById('username');
         saveUser({ username: nameField.value, avatar: avatar.src, clicks: 0, hits: 0 });

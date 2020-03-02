@@ -5,8 +5,7 @@ const boardSize = 10;
 initializeBoard();
 drawBoard();
 
-function initializeBoard()
-{
+function initializeBoard() {
     board = [];
     for (let row = 0; row < boardSize; row++) {
         const rowSpaces = [];
@@ -20,7 +19,7 @@ function initializeBoard()
 
 function drawBoard() {
     const boardElement = document.getElementById('board');
-    for (let row in board) {
+    for (let row in board) { // interesting use of the let/in syntax! usually with arrays we use let/of, since in iterates through the keys of an object, while in iterates through the values in an array
         for (let space in board[row]) {
             // This create an individual space element for the board.
             // 'space' variable will be zero or one (set in initializeBoard)
@@ -37,12 +36,13 @@ function fireCannonball(e) {
     // if clicked (e. target) is not the partent elemeon on which the event lister was set (e. currentTarget)
     if (e.target !== e.currentarget) {
 //extract row and collumn form the HTML element ids
+        // cool string interrogation
         let row = e.target.id.substring(1, 2);
         let column = e.target.id.substring(2, 3);
         //alert("Clicked on row " + row + ", col " + col);
 
         //if player clicks on square with no monster, change the color and change the squars value
-        if (drawBoard[row][column] === 0) {
+        if (drawBoard[row][column] === 0) { // hmm, not sure this is working. drawBoard is a function, not an object, so this will never be true.
             e.target.style.background = '#bbb';
         }
     }

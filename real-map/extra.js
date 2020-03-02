@@ -1,3 +1,4 @@
+// hmmm, did this get used at all?
 // Generates the HTML divs for the grid for both players
 Game.prototype.createGrid = function() {
     var gridDiv = document.querySelectorAll('.grid');

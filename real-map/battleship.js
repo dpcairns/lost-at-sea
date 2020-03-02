@@ -32,8 +32,8 @@ const gameBoardContainer = document.getElementById('gameboard');
 const computerGameBoardContainer = document.getElementById('computer-gameboard');
 
 // make the grid columns and rows
-for (i = 0; i < cols; i++) {
-    for (j = 0; j < rows; j++) {
+for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
 		
 		// create a new div HTML element for each grid square and make it the right size
         const square = document.createElement('div');
@@ -51,8 +51,9 @@ for (i = 0; i < cols; i++) {
         square.style.left = leftPosition + 'px';						
     }
 }
-for (k = 0; k < cols; k++) {
-    for (l = 0; l < rows; l++) {
+// nice nested loops!
+for (let k = 0; k < cols; k++) {
+    for (let l = 0; l < rows; l++) {
         const square2 = document.createElement('div');
         computerGameBoardContainer.appendChild(square2);
         
@@ -73,52 +74,35 @@ let totalClicks = 0;
    and place ships on the board (later, create function for random placement!)
    0 = empty, 1 = part of a ship, 2 = a sunken part of a ship, 3 = a missed shot
 */
-const gameBoard = [
 
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+const makeBoard = () => Array(9).fill(Array(10).fill(0));
 
-];
+const gameBoard = makeBoard();
 
-const computerBoard = [
-
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-];
-
-                                                                // USER Random Start Locations
-
-let randomLocation1 = [1, Math.floor(Math.random() * 6)];
-let randomLocation2 = [2, Math.floor(Math.random() * 7)];
-let randomLocation3 = [6, Math.floor(Math.random() * 7)];
-let randomLocation4 = [9, Math.floor(Math.random() * 8)];
-let randomLocation5 = [4, Math.floor(Math.random() * 6)];
-                                                                // Computer Random Start Locations
-let computerRandomLocation1 = [3, Math.floor(Math.random() * 6)];
-let computerRandomLocation2 = [5, Math.floor(Math.random() * 7)];
-let computerRandomLocation3 = [2, Math.floor(Math.random() * 7)];
-let computerRandomLocation4 = [9, Math.floor(Math.random() * 8)];
-let computerRandomLocation5 = [1, Math.floor(Math.random() * 6)];
+const computerBoard = makeBoard();
 
 
-                                                                // How we set Boat Lenghts
+const makeRandom = num => Math.floor(Math.random() * num);
+// USER Random Start Locations
+const makeLocation = (num1, num2) => [num1, makeRandom(num2)];
+
+let randomLocation1 = makeLocation(1, 6);
+let randomLocation2 = makeLocation(2, 7);
+let randomLocation3 = makeLocation(6, 7);
+let randomLocation4 = makeLocation(9, 8);
+let randomLocation5 = makeLocation(4, 6);
+
+// Computer Random Start Locations
+let computerRandomLocation1 = makeLocation(3, 6);
+let computerRandomLocation2 = makeLocation(5, 7);
+let computerRandomLocation3 = makeLocation(2, 7);
+let computerRandomLocation4 = makeLocation(9, 8);
+let computerRandomLocation5 = makeLocation(1, 6);
+
+
+// How we set Boat Lenghts
+// i would refactor these into a makeBoat function, since it seems like a lot of repitition here
+// hmmmm are these boats ever used?
 let boatOne = [ 
     gameBoard[randomLocation1[0]][randomLocation1[1]] = 1,
     gameBoard[randomLocation1[0]][randomLocation1[1] + 1] = 1,
@@ -129,6 +113,7 @@ let boatOne = [
     computerBoard[computerRandomLocation1[0]][computerRandomLocation1[1] + 2] = 1,
 
 ];
+
 let boatTwo = [
     gameBoard[randomLocation2[0]][randomLocation2[1]] = 2,
     gameBoard[randomLocation2[0]][randomLocation2[1] + 1] = 2,
@@ -168,7 +153,7 @@ let boatFive = [
     computerBoard[computerRandomLocation5[0]][computerRandomLocation5[1] + 3] = 5
 ];
 
-                                                                // OVERLAP CONTROL 
+// OVERLAP CONTROL 
 function compareCoord(array1, array2) {
     if (array1[0] !== array2[0] && array1[1] !== array2[1]) {
         return true;
@@ -190,7 +175,7 @@ while (!compareCoord(randomLocation1, randomLocation4)) {
 console.log(JSON.stringify(gameBoard));
 console.log(JSON.stringify(computerBoard));
 
-                                                                // FUNCTIONALITY OF THE BOARD
+// FUNCTIONALITY OF THE BOARD
 // set event listener for all elements in gameboard, run fireTorpedo function when square is clicked
 gameBoardContainer.addEventListener('click', (e) => {
     fireTorpedo(e);
@@ -217,8 +202,7 @@ function fireTorpedo(e) {
             console.log(totalClicks);
 			
 		// if player clicks a square with a ship, change the color and change square's value
-        } else if (gameBoard[row][col] === 1 ||
-            gameBoard[row][col] === 2 || gameBoard[row][col] === 3 || gameBoard[row][col] === 4 || gameBoard[row][col] === 5) {
+        } else if ([1, 2, 3, 4, 5].includes(gameBoard[row][col])) {
             e.target.style.background = 'red';
 			// set this square's value to 2 to indicate the ship has been hit
             gameBoard[row][col] = 8;
@@ -228,7 +212,7 @@ function fireTorpedo(e) {
             totalClicks++;
             addHit();
             addClick();
-                                                                // How we win the game
+            // How we win the game
             if (hitCount === 16) {
                 alert('All enemy battleships have been defeated! You win!');
                 window.location = '../results/index.html';
@@ -242,15 +226,13 @@ function fireTorpedo(e) {
 }
 
 function computerTorpedo() {
-    
     const randomLoc = [Math.floor(Math.random() * 9), Math.floor(Math.random() * 9)];
     const placement = computerBoard[randomLoc[0]][randomLoc[1]];
     const computerTarg = document.getElementById('p' + randomLoc[0] + randomLoc[1]);
   
     if (placement === 0) {
         computerTarg.style.background = '#bbb';
-    } else if (placement === 1 ||
-        placement === 2 || placement === 3 || placement === 4 || placement === 5) {
+    } else if ([1, 2, 3, 4, 5].includes(placement)) {
         computerTarg.style.background = 'red';
     }
 }
